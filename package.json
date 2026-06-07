@@ -1,0 +1,141 @@
+{
+  "name": "conflict-vscode",
+  "displayName": "Conflict — IntelliJ-style merge & diff",
+  "description": "3-way conflict resolution and 2-pane diff viewer with bezier pipes, IntelliJ-style. Auto-collapses unchanged regions, breadcrumb hovers, scoped chevron actions.",
+  "version": "0.1.0",
+  "publisher": "nicolas",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "icon": "media/icon.png",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nicolas/conflict-vscode"
+  },
+  "bugs": {
+    "url": "https://github.com/nicolas/conflict-vscode/issues"
+  },
+  "homepage": "https://github.com/nicolas/conflict-vscode#readme",
+  "keywords": [
+    "merge",
+    "diff",
+    "conflict",
+    "git",
+    "3-way merge",
+    "bezier",
+    "intellij",
+    "rebase"
+  ],
+  "categories": [
+    "SCM Providers",
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "conflict.openMergeView",
+        "title": "Conflict: Open Merge View",
+        "category": "Conflict"
+      },
+      {
+        "command": "conflict.acceptLeft",
+        "title": "Conflict: Accept Left",
+        "category": "Conflict"
+      },
+      {
+        "command": "conflict.acceptRight",
+        "title": "Conflict: Accept Right",
+        "category": "Conflict"
+      },
+      {
+        "command": "conflict.acceptBoth",
+        "title": "Conflict: Accept Both",
+        "category": "Conflict"
+      },
+      {
+        "command": "conflict.save",
+        "title": "Conflict: Save Resolved File",
+        "category": "Conflict"
+      },
+      {
+        "command": "conflict.openDiff",
+        "title": "Conflict: Open Diff View",
+        "category": "Conflict"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "conflict.openMergeView",
+          "when": "resourceScheme == file",
+          "group": "navigation"
+        }
+      ],
+      "scm/resourceState/context": [
+        {
+          "command": "conflict.openDiff",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configurationDefaults": {
+      "merge-conflict.codeLens.enabled": false,
+      "merge-conflict.decorators.enabled": false,
+      "merge-conflict.autoNavigateNextConflict.enabled": false
+    },
+    "configuration": {
+      "title": "Conflict",
+      "properties": {
+        "conflict.diffViewer.mode": {
+          "type": "string",
+          "enum": ["side-by-side", "native"],
+          "default": "side-by-side",
+          "description": "Which viewer renders the file-vs-HEAD diff. 'side-by-side' = the bezier-pipe diff view from this extension; 'native' = VSCode's built-in text diff editor."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build:host": "esbuild src/extension.ts --bundle --outfile=out/extension.js --platform=node --target=node18 --format=cjs --external:vscode --sourcemap",
+    "build:webview": "esbuild src/webview/main.ts --bundle --outfile=out/webview/main.js --platform=browser --format=iife --target=es2020 --sourcemap --loader:.ttf=file",
+    "build:webview-html": "node scripts/copy-webview-assets.mjs",
+    "build:monaco": "node scripts/copy-monaco-assets.mjs",
+    "build": "npm run build:host && npm run build:webview && npm run build:webview-html && npm run build:monaco",
+    "compile:test": "tsc -p tsconfig.test.json",
+    "watch": "npm run build -- --watch",
+    "test:unit": "vitest run",
+    "test:unit:watch": "vitest",
+    "pretest:e2e": "npm run build && npm run compile:test",
+    "test:e2e": "vscode-test",
+    "lint": "eslint src test --ext .ts",
+    "typecheck": "tsc --noEmit",
+    "vscode:prepublish": "npm run build",
+    "package": "vsce package"
+  },
+  "dependencies": {
+    "monaco-editor": "^0.45.0",
+    "vscode-oniguruma": "^2.0.1",
+    "vscode-textmate": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.3.9",
+    "@vscode/vsce": "^2.24.0",
+    "esbuild": "^0.20.0",
+    "eslint": "^8.57.0",
+    "jsdom": "^29.1.1",
+    "mocha": "^10.4.0",
+    "typescript": "^5.4.0",
+    "vitest": "^1.4.0"
+  }
+}

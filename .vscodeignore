@@ -1,0 +1,20 @@
+# Sources kept out of the published VSIX — only `out/` ships.
+.vscode/**
+.vscode-test/**
+src/**
+test/**
+docs/**
+demo/**
+fixtures/**
+scripts/**
+node_modules/**
+out/**/*.map
+**/.eslintrc.json
+**/tsconfig.json
+**/tsconfig.test.json
+**/vitest.config.ts
+.gitignore
+.gitattributes
+.editorconfig
+**/*.test.ts
+CLAUDE.md

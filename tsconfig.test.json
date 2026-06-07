@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "out",
+    "rootDir": ".",
+    "types": ["node", "mocha"],
+    "sourceMap": true
+  },
+  "include": ["src/**/*.ts", "test/e2e/**/*.ts"],
+  "exclude": ["node_modules", "out", "test/unit"]
+}

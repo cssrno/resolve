@@ -1,0 +1,14 @@
+const config = {
+<<<<<<< HEAD
+  port: 3000,
+  host: 'localhost',
+||||||| merged common ancestors
+  port: 8080,
+  host: 'localhost',
+=======
+  port: 8080,
+  host: '0.0.0.0',
+>>>>>>> origin/main
+};
+
+export default config;
