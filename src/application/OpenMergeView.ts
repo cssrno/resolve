@@ -54,8 +54,40 @@ export class OpenMergeView {
 
     const session = MergeSession.from(file);
     const handle = this.webview.open(`Merge: ${shortName(uri)}`);
-    const languageId = await this.resolveLanguageId(uri);
 
+    // Attach the message handler IMMEDIATELY — the webview may fire
+    // `ready` before the async init payload is built (= before
+    // fetchSymbols / fetchMergeContext resolve). We queue the ready
+    // event and post the payload once it's available.
+    let pendingReady = false;
+    let initPayload: Awaited<ReturnType<typeof this.buildInitPayload>> | null = null;
+    let initSent = false;
+    const flushIfReady = (): void => {
+      if (pendingReady && initPayload && !initSent) {
+        initSent = true;
+        handle.postMessage(initPayload);
+      }
+    };
+    handle.onMessage((msg) => {
+      if (msg.kind === 'ready' && !initSent) {
+        pendingReady = true;
+        flushIfReady();
+        return;
+      }
+      this.handleMessage(msg, file, session, handle, uri);
+    });
+
+    initPayload = await this.buildInitPayload(file, session, handle, uri);
+    flushIfReady();
+  }
+
+  private async buildInitPayload(
+    file: ConflictFile,
+    session: MergeSession,
+    handle: WebviewHandle,
+    uri: string,
+  ) {
+    const languageId = await this.resolveLanguageId(uri);
     const symbols = this.initCtx.fetchSymbols
       ? await this.initCtx.fetchSymbols(uri).catch(() => [])
       : [];
@@ -64,7 +96,7 @@ export class OpenMergeView {
       : undefined;
     const fileDto = toFileDTO(file, session, languageId);
     if (mergeContext) fileDto.mergeContext = mergeContext;
-    const initPayload = {
+    return {
       kind: 'init' as const,
       file: fileDto,
       font: this.initCtx.font(),
@@ -74,18 +106,6 @@ export class OpenMergeView {
       monacoBaseUri: handle.resolveAssetUri(['monaco', 'vs']),
       symbols,
     };
-
-    let initSent = false;
-    handle.onMessage((msg) => {
-      // Defer init until the webview signals it's ready so the message isn't
-      // dropped before its message listener is attached.
-      if (msg.kind === 'ready' && !initSent) {
-        initSent = true;
-        handle.postMessage(initPayload);
-        return;
-      }
-      this.handleMessage(msg, file, session, handle, uri);
-    });
   }
 
   private async handleMessage(

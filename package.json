@@ -1,8 +1,8 @@
 {
-  "name": "conflict-vscode",
-  "displayName": "Conflict — IntelliJ-style merge & diff",
-  "description": "3-way conflict resolution and 2-pane diff viewer with bezier pipes, IntelliJ-style. Auto-collapses unchanged regions, breadcrumb hovers, scoped chevron actions.",
-  "version": "0.1.0",
+  "name": "resolve",
+  "displayName": "Resolve",
+  "description": "IntelliJ-style 3-way merge editor and 2-pane diff viewer with bezier pipes. Auto-collapses unchanged regions, breadcrumb hovers, scoped chevron actions, rebase / merge context headers.",
+  "version": "0.1.1",
   "publisher": "nicolas",
   "engines": {
     "vscode": "^1.85.0"
@@ -93,7 +93,10 @@
       "properties": {
         "conflict.diffViewer.mode": {
           "type": "string",
-          "enum": ["side-by-side", "native"],
+          "enum": [
+            "side-by-side",
+            "native"
+          ],
           "default": "side-by-side",
           "description": "Which viewer renders the file-vs-HEAD diff. 'side-by-side' = the bezier-pipe diff view from this extension; 'native' = VSCode's built-in text diff editor."
         }

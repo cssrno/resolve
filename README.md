@@ -1,11 +1,17 @@
-# Conflict — IntelliJ-style merge & diff for VSCode
-
-![Banner](media/banner.png)
+# Resolve — IntelliJ-style merge & diff for VSCode
 
 > 3-way conflict resolution with bezier pipes, 2-pane diff viewer
 > with per-hunk staging, IntelliJ-style "collapse unchanged
 > fragments", live edits, breadcrumb chips, and rebase / merge
 > context headers. All rendered inside a Monaco-backed webview.
+
+## Demo
+
+<video src="media/demo.mp4" controls width="800"></video>
+
+> 90-second walkthrough of every feature — auto-opening merge view,
+> bezier ribbons, smart-merge buttons, collapse-unchanged with the
+> continuous wave, hover-to-thicken bands, hunk staging, live edits.
 
 ## Why
 
@@ -84,8 +90,8 @@ From a packaged VSIX:
 ```bash
 npm install
 npm run build
-npm run package   # outputs conflict-vscode-<version>.vsix
-code --install-extension conflict-vscode-*.vsix
+npm run package   # outputs resolve-<version>.vsix
+code --install-extension resolve-*.vsix
 ```
 
 ## Usage

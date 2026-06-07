@@ -1,4 +1,5 @@
 import { execFile, spawn } from 'node:child_process';
+import { readFile } from 'node:fs/promises';
 
 export interface MergeContextResult {
   readonly operation: 'merge' | 'rebase';
@@ -55,7 +56,7 @@ export class GitCli {
           { cwd: repoRoot, maxBuffer: MAX_GIT_STDOUT_BYTES },
         );
         const path = stdout.trim();
-        const content = await (await import('node:fs/promises')).readFile(path, 'utf8');
+        const content = await readFile(path, 'utf8');
         return content.trim();
       } catch {
         return null;
