@@ -6,3 +6,10 @@ dist/
 *.log
 .DS_Store
 .idea/
+
+# Local dev / demo assets — kept on disk, not versioned
+docs/VIDEO_SCRIPT.md
+fixtures/demo/
+scripts/setup-demo-fixture.sh
+demo/
+CLAUDE.md
