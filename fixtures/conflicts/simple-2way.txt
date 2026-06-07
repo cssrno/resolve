@@ -1,0 +1,9 @@
+function greet(name) {
+<<<<<<< HEAD
+  return `Hello, ${name}!`;
+=======
+  return `Hi there, ${name}.`;
+>>>>>>> feature/greeting
+}
+
+export { greet };

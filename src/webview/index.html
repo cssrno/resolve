@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="{{CSP}}" />
+  <title>Conflict Merge</title>
+  <style>
+    :root {
+      --bg: var(--vscode-editor-background, #1e1e1e);
+      --fg: var(--vscode-editor-foreground, #d4d4d4);
+      --border: var(--vscode-panel-border, #2a2a2a);
+      --header-bg: var(--vscode-editorWidget-background, #252526);
+
+      --add-fill:    rgba(60, 200, 100, 0.26);
+      --add-stroke:  rgba(60, 200, 100, 0.55);
+      --mod-fill:    rgba(80, 150, 240, 0.26);
+      --mod-stroke:  rgba(80, 150, 240, 0.55);
+      --conflict-fill:   rgba(230, 80, 80, 0.18);
+      --conflict-stroke: rgba(230, 80, 80, 0.60);
+      --del-fill: rgba(160, 160, 160, 0.40);
+      --del-stroke: rgba(180, 180, 180, 0.85);
+      --result-resolved-fill: rgba(120, 200, 120, 0.10);
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; height: 100%;
+      background: var(--bg); color: var(--fg);
+      font-family: var(--vscode-font-family, system-ui, sans-serif);
+      font-size: 13px; overflow: hidden; }
+
+    #toolbar { display: flex; gap: 8px; padding: 3px 10px;
+      background: var(--header-bg); border-bottom: 1px solid var(--border);
+      align-items: center; height: 26px; }
+    #toolbar button { background: var(--vscode-button-background, #0e639c);
+      color: var(--vscode-button-foreground, #fff);
+      border: 0; padding: 4px 10px; cursor: pointer; border-radius: 2px;
+      font-size: 12px; }
+    #toolbar button:hover { background: var(--vscode-button-hoverBackground, #1177bb); }
+    #toolbar .spacer-fill { flex: 1; }
+    #toolbar .status { font-size: 11px; opacity: 0.7; }
+    #toolbar .toolbar-icon-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--vscode-button-secondaryBackground, transparent);
+      color: var(--vscode-button-secondaryForeground, var(--fg));
+      border: 1px solid rgba(180,180,180,0.2);
+      padding: 3px 8px; font-size: 11px; border-radius: 2px;
+      cursor: pointer; position: relative;
+    }
+    /* Sync-scroll badge: small two-arrow loop drawn inside the button's
+       bottom-right corner. Absolute so it floats over the arrows SVG
+       without pushing layout, but contained INSIDE the button border. */
+    #toolbar .toolbar-icon-btn svg.sync-loop-badge {
+      position: absolute; right: 1px; bottom: -1px;
+      width: 17px; height: 17px; pointer-events: none; z-index: 10;
+      overflow: visible;
+    }
+    #toolbar .toolbar-icon-btn:hover {
+      background: var(--vscode-button-secondaryHoverBackground, rgba(180,180,180,0.1));
+    }
+    #toolbar .toolbar-icon-btn:disabled {
+      opacity: 0.35; cursor: default; background: transparent;
+    }
+    #toolbar .toolbar-icon-btn:disabled:hover { background: transparent; }
+    #toolbar .toolbar-icon-btn svg { width: 14px; height: 14px; position: relative; z-index: 0; }
+    /* Toggle variant: pressed state highlighted via accent fill + border. */
+    /* Collapse button has 2 SVG icons stacked — collapse chevrons (point
+       inward) when the view is fully collapsed (button active), expand
+       chevrons (point outward) when one or more chips are expanded or
+       the toggle is off. */
+    #btn-collapse-unchanged .icon-collapse { display: none; }
+    #btn-collapse-unchanged .icon-expand   { display: inline; }
+    #btn-collapse-unchanged.is-active .icon-collapse { display: inline; }
+    #btn-collapse-unchanged.is-active .icon-expand   { display: none; }
+    #toolbar .toolbar-toggle.is-active {
+      background: var(--vscode-toolbar-activeBackground, rgba(120, 180, 240, 0.18));
+      border-color: rgba(120, 180, 240, 0.45);
+      color: #fff;
+    }
+    /* Thin vertical divider grouping the toolbar into logical clusters
+       (nav | apply-non-conflicting | save+sync). 1px wide, slightly less
+       than full toolbar height so it reads as a quiet break. */
+    #toolbar .toolbar-sep {
+      display: inline-block; width: 1px; height: 16px;
+      background: rgba(180,180,180,0.2); margin: 0 4px;
+    }
+
+    #app { position: relative; display: grid;
+      grid-template-columns:
+        1fr 16px 40px 24px 28px 24px 24px
+        1fr 24px 24px 28px 24px 40px 16px 1fr;
+      grid-template-rows: 22px 1fr;
+      height: calc(100% - 26px); overflow: hidden; }
+
+    .col-header { grid-row: 1; height: 22px; background: var(--header-bg);
+      border-bottom: 1px solid var(--border); display: flex; align-items: center;
+      padding: 0 8px; font-size: 10px; text-transform: uppercase; opacity: 0.8;
+      white-space: nowrap; gap: 6px; }
+    /* IntelliJ-style local/result/remote header: padlock icon + bold
+       primary label + greyed secondary path/branch. Overrides the
+       uppercase + low opacity rules for the panes' own headers. */
+    .merge-header { text-transform: none; opacity: 1; font-size: 12px;
+      gap: 6px; overflow: hidden; }
+    .merge-header-lock { display: inline-flex; color: #fff; flex: 0 0 auto; }
+    .merge-header-lock svg { width: 12px; height: 12px; }
+    .merge-header-primary { color: #fff; font-weight: 500; flex: 0 0 auto; }
+    .merge-header-secondary { color: rgba(180,180,180,0.55);
+      overflow: hidden; text-overflow: ellipsis; min-width: 0;
+      font-family: var(--vscode-editor-font-family, monospace); font-size: 11px; }
+    .col-header.diff-stage-all-header {
+      padding: 0; display: flex; justify-content: center; align-items: center;
+    }
+    /* Diff view: left column header — padlock + commit hash + file path.
+       Hash and lock are white (committed/locked source), path is grey. */
+    .col-header.diff-index-header {
+      text-transform: none; opacity: 1; gap: 6px;
+      font-family: var(--vscode-editor-font-family, monospace);
+    }
+    .col-header.diff-index-header .diff-index-lock {
+      display: inline-flex; color: #fff;
+    }
+    .col-header.diff-index-header .diff-index-lock svg {
+      width: 12px; height: 12px;
+    }
+    .col-header.diff-index-header .diff-index-hash {
+      color: #fff; font-weight: 500;
+    }
+    .col-header.diff-index-header .diff-index-path {
+      color: rgba(180,180,180,0.55); overflow: hidden; text-overflow: ellipsis;
+    }
+    .col-header .branch { font-weight: normal; opacity: 0.55; margin-left: 6px; font-size: 10px; }
+
+    .editor-pane { grid-row: 2; position: relative; overflow: hidden;
+      background: var(--bg); }
+    .editor-pane .monaco-host { position: absolute; inset: 0; }
+
+    .gutter-cell { grid-row: 2; position: relative; overflow: hidden;
+      background: var(--bg); }
+    .gutter-cell .gutter-content { position: relative; will-change: transform; }
+
+    .ln-row { line-height: 18px; text-align: right; padding-right: 4px;
+      font-size: 12px; user-select: none; color: rgba(180,180,180,0.55);
+      font-family: var(--vscode-editor-font-family, monospace); position: relative; }
+    /* Active-line highlight, applied per pane based on its Monaco cursor. */
+    .ln-row.ln-active { color: #fff; }
+    .ln-row.add             { background: var(--add-fill); }
+    .ln-row.mod             { background: var(--mod-fill); }
+    .ln-row.del             { background: var(--del-fill); }
+    .ln-row.conflict        { background: var(--conflict-fill); }
+    .ln-row.result-resolved { background: var(--result-resolved-fill); }
+    .ln-row.result-unresolved { background: var(--conflict-fill); }
+    /* Every ln-row is a positioning anchor for its ::before/::after markers. */
+    .ln-row { position: relative; }
+    /* Resolved-block outline: dashed TOP + BOTTOM strokes only. */
+    .ln-row.resolved-outline-top::before,
+    .ln-row.resolved-outline-bottom::before,
+    .ln-row.resolved-outline-single::before,
+    .ln-row.resolved-outline-single::after {
+      content: '' !important; position: absolute !important;
+      left: 0 !important; right: 0 !important;
+      width: auto !important; height: 2px !important;
+      background: repeating-linear-gradient(to right,
+        var(--resolved-stroke, rgba(180,180,180,0.85)) 0 2px, transparent 2px 4px) !important;
+      pointer-events: none !important; z-index: 3 !important;
+    }
+    .ln-row.resolved-outline-top::before    { top: 0 !important; bottom: auto !important; }
+    .ln-row.resolved-outline-bottom::before { top: auto !important; bottom: 0 !important; }
+    .ln-row.resolved-outline-single::before { top: 0 !important; bottom: auto !important; }
+    .ln-row.resolved-outline-single::after  { top: auto !important; bottom: 0 !important; }
+    .ln-row[data-resolved-color="add"]      { --resolved-stroke: rgba(60, 200, 100, 0.75); }
+    .ln-row[data-resolved-color="mod"]      { --resolved-stroke: rgba(80, 150, 240, 0.75); }
+    .ln-row[data-resolved-color="del"]      { --resolved-stroke: rgba(160, 160, 160, 0.75); }
+    .ln-row[data-resolved-color="conflict"] { --resolved-stroke: rgba(230, 80, 80, 0.75); }
+    .actions-cell .ln-row, .spacer-cell .ln-row { color: transparent; }
+
+    /* Per-row separator between code pane and gutter band */
+    #space-l1 .ln-row::after, #space-r1 .ln-row::after {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 1px; background: rgba(160,160,160,0.22); pointer-events: none;
+    }
+    #space-l2 .ln-row::after, #space-r2 .ln-row::after {
+      content: ''; position: absolute; right: 0; top: 0; bottom: 0;
+      width: 1px; background: rgba(160,160,160,0.22); pointer-events: none;
+    }
+    #space-l1 .ln-row.add::after, #space-l2 .ln-row.add::after,
+    #space-r1 .ln-row.add::after, #space-r2 .ln-row.add::after {
+      width: 2px; background: rgba(85, 200, 120, 0.42);
+    }
+    #space-l1 .ln-row.mod::after, #space-l2 .ln-row.mod::after,
+    #space-r1 .ln-row.mod::after, #space-r2 .ln-row.mod::after {
+      width: 2px; background: rgba(100, 165, 235, 0.42);
+    }
+    #space-l1 .ln-row.conflict::after, #space-l2 .ln-row.conflict::after,
+    #space-r1 .ln-row.conflict::after, #space-r2 .ln-row.conflict::after,
+    #space-l1 .ln-row.result-unresolved::after, #space-l2 .ln-row.result-unresolved::after,
+    #space-r1 .ln-row.result-unresolved::after, #space-r2 .ln-row.result-unresolved::after {
+      width: 2px; background: rgba(225, 95, 95, 0.42);
+    }
+    #space-l1 .ln-row.result-resolved::after, #space-l2 .ln-row.result-resolved::after,
+    #space-r1 .ln-row.result-resolved::after, #space-r2 .ln-row.result-resolved::after {
+      width: 2px; background: rgba(125, 200, 125, 0.40);
+    }
+
+    .pipes-cell { grid-row: 2; position: relative; overflow: hidden;
+      background: var(--bg); }
+    .pipes-cell svg { position: absolute; inset: 0; pointer-events: none; }
+    .pipes-cell svg path { pointer-events: fill; cursor: pointer; }
+
+    .actions-cell { grid-row: 2; position: relative; overflow: hidden;
+      background: var(--bg); }
+
+    .zone-actions { position: absolute; display: flex; gap: 0;
+      transform: translateX(-50%); left: 50%; pointer-events: auto; z-index: 10; }
+    .icon-btn { background: transparent; color: rgba(220,220,220,0.75); border: 0;
+      width: 18px; height: 18px; padding: 0; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; }
+    .icon-btn:hover { color: #fff; }
+    .icon-btn svg { width: 16px; height: 16px; }
+
+    /* Diff view: revert + stage column actions, white-outlined to read as
+       interactive controls against the dark gutter. */
+    .diff-zone-actions { position: absolute; display: flex; left: 50%;
+      transform: translateX(-50%); pointer-events: auto; z-index: 10; }
+    .diff-zone-actions .icon-btn {
+      color: #fff;
+    }
+    .diff-zone-actions .icon-btn:hover {
+      color: #fff;
+    }
+    .stage-checkbox { display: inline-flex; align-items: center; justify-content: center;
+      width: 18px; height: 18px; cursor: pointer; background: transparent; }
+    .stage-checkbox input {
+      appearance: none; -webkit-appearance: none;
+      width: 14px; height: 14px; margin: 0; cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.85);
+      background: transparent;
+      border-radius: 2px; position: relative;
+    }
+    .stage-checkbox input:hover { background: rgba(255,255,255,0.08); }
+    .stage-checkbox input:checked {
+      background: var(--vscode-checkbox-selectBackground, rgba(80,150,240,0.85));
+    }
+    .stage-checkbox input:checked::after {
+      content: ''; position: absolute; left: 3px; top: 0;
+      width: 4px; height: 8px;
+      border: solid #fff;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+
+    /* Diff view: gutter band colors for add/del with the OPPOSITE pane shadow */
+    .ln-row.add-shadow   { background: rgba(60, 200, 100, 0.06); }
+    .ln-row.del-shadow   { background: rgba(160, 160, 160, 0.10); }
+
+    /* Diff view: inter-line markers for zero-line hunk sides. One stroke
+       per zero-line hunk, at the BOTTOM of the previous row, in the same
+       hue as the band fill on the other side. Using --add-fill / --del-fill
+       keeps the marker visually continuous with the colored band drawn
+       elsewhere in the pane. */
+    .ln-row.marker-bottom-add { box-shadow: inset 0 -3px 0 var(--add-fill); }
+    .ln-row.marker-bottom-del { box-shadow: inset 0 -3px 0 var(--del-fill); }
+    .ln-row.marker-bottom-mod { box-shadow: inset 0 -3px 0 var(--mod-fill); }
+    .monaco-editor .diff-marker-added   { box-shadow: inset 0 -3px 0 var(--add-fill) !important; }
+    .monaco-editor .diff-marker-removed { box-shadow: inset 0 -3px 0 var(--del-fill) !important; }
+
+    /* Diff view: extend the bezier outline strokes across the full gutter
+       width by drawing a 1px inset shadow on the first / last hunk row,
+       BUT only when the hunk is unstaged. Staged hunks render the band
+       at the same alpha as the adjacent areas — adding an outline on top
+       would composite to a brighter shade. The natural band edges suffice
+       once the band fully matches its neighbours. */
+    .ln-row.add.is-unstaged.hunk-edge-top    { box-shadow: inset 0  1px 0 var(--add-fill); }
+    .ln-row.add.is-unstaged.hunk-edge-bottom { box-shadow: inset 0 -1px 0 var(--add-fill); }
+    .ln-row.add.is-unstaged.hunk-edge-top.hunk-edge-bottom {
+      box-shadow: inset 0 1px 0 var(--add-fill), inset 0 -1px 0 var(--add-fill);
+    }
+    .ln-row.mod.is-unstaged.hunk-edge-top    { box-shadow: inset 0  1px 0 var(--mod-fill); }
+    .ln-row.mod.is-unstaged.hunk-edge-bottom { box-shadow: inset 0 -1px 0 var(--mod-fill); }
+    .ln-row.mod.is-unstaged.hunk-edge-top.hunk-edge-bottom {
+      box-shadow: inset 0 1px 0 var(--mod-fill), inset 0 -1px 0 var(--mod-fill);
+    }
+    .ln-row.del.is-unstaged.hunk-edge-top    { box-shadow: inset 0  1px 0 var(--del-fill); }
+    .ln-row.del.is-unstaged.hunk-edge-bottom { box-shadow: inset 0 -1px 0 var(--del-fill); }
+    .ln-row.del.is-unstaged.hunk-edge-top.hunk-edge-bottom {
+      box-shadow: inset 0 1px 0 var(--del-fill), inset 0 -1px 0 var(--del-fill);
+    }
+
+    /* Diff view: unstaged hunks render their gutter band at half alpha so
+       the bezier corridor and the surrounding gutter columns track the
+       same staged/pending opacity rule. The outline edge traits stay at
+       the staged alpha — the contour color is constant, only the fill
+       moves. */
+    .ln-row.add.is-unstaged { background: rgba(60,  200, 100, 0.13); }
+    .ln-row.mod.is-unstaged { background: rgba(80,  150, 240, 0.13); }
+    .ln-row.del.is-unstaged { background: rgba(160, 160, 160, 0.20); }
+    .monaco-editor .conflict-line-add.diff-pane-unstaged { background: rgba(60,  200, 100, 0.13) !important; }
+    .monaco-editor .conflict-line-mod.diff-pane-unstaged { background: rgba(80,  150, 240, 0.13) !important; }
+    .monaco-editor .conflict-line-del.diff-pane-unstaged { background: rgba(160, 160, 160, 0.20) !important; }
+
+    /* Diff view: per-row separator between each editor pane and the gutter
+       column it touches. Identical pattern to the merge view's space-l1 /
+       space-r1 separator on the spacer-cells flanking each pane, including
+       the per-class color variants so the divider tints with the hunk band. */
+    #diff-space-l .ln-row::after {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 1px; background: rgba(160,160,160,0.22); pointer-events: none;
+    }
+    #diff-space-r .ln-row::after {
+      content: ''; position: absolute; right: 0; top: 0; bottom: 0;
+      width: 1px; background: rgba(160,160,160,0.22); pointer-events: none;
+    }
+    /* On hunk rows the separator takes the SAME color as the row's own
+       band background — blends in fully, no visible trait against the
+       band. Tracks the staged/unstaged alpha so the blending stays
+       perfect in both states. */
+    #diff-space-l .ln-row.add::after, #diff-space-r .ln-row.add::after {
+      width: 2px; background: var(--add-fill);
+    }
+    #diff-space-l .ln-row.add.is-unstaged::after,
+    #diff-space-r .ln-row.add.is-unstaged::after {
+      background: rgba(60, 200, 100, 0.13);
+    }
+    #diff-space-l .ln-row.mod::after, #diff-space-r .ln-row.mod::after {
+      width: 2px; background: var(--mod-fill);
+    }
+    #diff-space-l .ln-row.mod.is-unstaged::after,
+    #diff-space-r .ln-row.mod.is-unstaged::after {
+      background: rgba(80, 150, 240, 0.13);
+    }
+    #diff-space-l .ln-row.del::after, #diff-space-r .ln-row.del::after {
+      width: 2px; background: var(--del-fill);
+    }
+    #diff-space-l .ln-row.del.is-unstaged::after,
+    #diff-space-r .ln-row.del.is-unstaged::after {
+      background: rgba(160, 160, 160, 0.20);
+    }
+
+    /* Hide Monaco's overview ruler + line numbers gutter (we provide our own) */
+    .monaco-editor .overflow-guard { background: var(--bg); }
+
+    /* Monaco line decorations matching gutter ln-row colors */
+    .monaco-editor .conflict-line-add             { background: var(--add-fill); }
+    .monaco-editor .conflict-line-mod             { background: var(--mod-fill); }
+    .monaco-editor .conflict-line-del             { background: var(--del-fill); }
+    .monaco-editor .conflict-line-conflict        { background: var(--conflict-fill); }
+    .monaco-editor .conflict-line-result-resolved   { background: var(--result-resolved-fill); }
+    .monaco-editor .conflict-line-result-unresolved { background: var(--conflict-fill); }
+    /* Monaco resolved outline: dashed top+bottom strokes only. Color encoded
+       via the extra side class (add/mod/del/conflict). */
+    .monaco-editor .conflict-line-resolved-outline-top::before {
+      content: ''; position: absolute; left: 0; right: 0; top: 0; height: 2px;
+      background: repeating-linear-gradient(to right,
+        var(--resolved-stroke, rgba(180,180,180,0.85)) 0 2px, transparent 2px 4px);
+      pointer-events: none; z-index: 5;
+    }
+    .monaco-editor .conflict-line-resolved-outline-bottom::before {
+      content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 2px;
+      background: repeating-linear-gradient(to right,
+        var(--resolved-stroke, rgba(180,180,180,0.85)) 0 2px, transparent 2px 4px);
+      pointer-events: none; z-index: 5;
+    }
+    .monaco-editor .conflict-line-resolved-outline-single::before {
+      content: ''; position: absolute; left: 0; right: 0; top: 0; height: 2px;
+      background: repeating-linear-gradient(to right,
+        var(--resolved-stroke, rgba(180,180,180,0.85)) 0 2px, transparent 2px 4px);
+      pointer-events: none; z-index: 5;
+    }
+    .monaco-editor .conflict-line-resolved-outline-single::after {
+      content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 2px;
+      background: repeating-linear-gradient(to right,
+        var(--resolved-stroke, rgba(180,180,180,0.85)) 0 2px, transparent 2px 4px);
+      pointer-events: none; z-index: 5;
+    }
+    .monaco-editor [class*="conflict-line-resolved-outline"].add      { --resolved-stroke: rgba(60, 200, 100, 0.75); }
+    .monaco-editor [class*="conflict-line-resolved-outline"].mod      { --resolved-stroke: rgba(80, 150, 240, 0.75); }
+    .monaco-editor [class*="conflict-line-resolved-outline"].del      { --resolved-stroke: rgba(160, 160, 160, 0.75); }
+    .monaco-editor [class*="conflict-line-resolved-outline"].conflict { --resolved-stroke: rgba(230, 80, 80, 0.75); }
+    /* 2px transparent gap between two adjacent same-color blocks: paint the
+       editor background over the top 2px of the first line of the next block.
+       Combined with the colored-line class on the same line — !important so
+       Monaco's overlay layering doesn't bury the inset shadow. */
+    .monaco-editor .conflict-line-divided {
+      box-shadow: inset 0 2px 0 var(--vscode-editor-background, #1e1e1e) !important;
+    }
+
+    /* Inter-line marker (e.g. deletion landing point): 3px colored bar drawn
+       at the BOTTOM of the previous line. Uses the exact same rgba as the
+       zone fill so the marker is visually indistinguishable from the band. */
+    .monaco-editor .conflict-marker-del      { box-shadow: inset 0 -3px 0 var(--del-fill) !important; }
+    .monaco-editor .conflict-marker-add      { box-shadow: inset 0 -3px 0 var(--add-fill) !important; }
+    .monaco-editor .conflict-marker-mod      { box-shadow: inset 0 -3px 0 var(--mod-fill) !important; }
+    .monaco-editor .conflict-marker-conflict { box-shadow: inset 0 -3px 0 var(--conflict-fill) !important; }
+
+    /* Same 2px gap on the gutter ln-rows (numbers, spacers, actions, bezier
+       columns) so the color continuity break is consistent across panes. */
+    .ln-row.block-divider { box-shadow: inset 0 2px 0 var(--bg); }
+
+    /* Placeholder row for a collapsed unchanged range. The row exists
+       only so the wave SVG band has vertical space to traverse — no
+       background, no cursor, not interactive. The breadcrumb chip is
+       the sole click target. */
+    .ln-row.ctx-collapsed {
+      background-color: transparent;
+      color: transparent !important;
+    }
+    /* Monaco line for the collapsed placeholder — invisible. The wave
+       SVG band traverses the row visually; the breadcrumb chip floats
+       above with the only label. */
+    .monaco-editor .ctx-collapsed-line { background: transparent !important; }
+    .monaco-editor .ctx-collapsed-text { color: transparent !important; }
+    /* Breadcrumb chip: floats above the wave inside the editor pane.
+       Drawn as an absolute-positioned div centered on the placeholder
+       row, with gray bg + italic gray text. */
+    /* Full-width SVG layer covering #app: hosts the continuous
+       wave+bezier+wave band path drawn for every ctx-collapsed row.
+       Sits above Monaco editor content but below the breadcrumb chip.
+       SVG container is pass-through; only the stroke of each path
+       captures hover so the surrounding panes stay clickable. */
+    .collapsed-band-overlay {
+      position: absolute; inset: 0; pointer-events: none; z-index: 50;
+    }
+    .collapsed-band-overlay path {
+      pointer-events: stroke; cursor: pointer;
+    }
+    .ctx-breadcrumb-chip {
+      position: absolute; pointer-events: auto; cursor: pointer;
+      background: rgba(70, 70, 70, 0.92);
+      color: rgba(200, 200, 200, 0.85);
+      font-style: italic;
+      font-family: var(--vscode-editor-font-family, monospace);
+      font-size: 12px;
+      padding: 0 8px;
+      border-radius: 2px;
+      white-space: nowrap;
+      z-index: 100;
+      display: inline-flex; align-items: center;
+    }
+
+    /* Inter-line marker on the gutter rows (no row-height shift): 3px stroke
+       at the BOTTOM of the LAST row before a zero-line section. Uses the
+       same fill rgba as the band so the marker visually merges with it. */
+    .ln-row.marker-bottom-del      { box-shadow: inset 0 -3px 0 var(--del-fill); }
+    .ln-row.marker-bottom-add      { box-shadow: inset 0 -3px 0 var(--add-fill); }
+    .ln-row.marker-bottom-mod      { box-shadow: inset 0 -3px 0 var(--mod-fill); }
+    .ln-row.marker-bottom-conflict { box-shadow: inset 0 -3px 0 var(--conflict-fill); }
+  </style>
+</head>
+<body>
+  <div id="toolbar">
+    <button id="btn-prev-block" class="toolbar-icon-btn" title="Previous conflict">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8 8,3 13,8"/><line x1="8" y1="3" x2="8" y2="14"/></svg>
+    </button>
+    <button id="btn-next-block" class="toolbar-icon-btn" title="Next conflict">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8 8,13 13,8"/><line x1="8" y1="2" x2="8" y2="13"/></svg>
+    </button>
+    <span class="toolbar-sep"></span>
+    <button id="btn-smart-merge" class="toolbar-icon-btn" title="Apply non-conflicting changes">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.5 5.6 10 7 8.6 4.5 10 2 7.5 3.4 5 2l1.4 2.5L5 7zM19.5 15.4 17 14l1.4 2.5L17 19l2.5-1.4L22 19l-1.4-2.5L22 14zM22 2l-2.5 1.4L17 2l1.4 2.5L17 7l2.5-1.4L22 7l-1.4-2.5zM6.69 19.65 18.74 7.6l-2.34-2.34L4.35 17.32z"/></svg>
+    </button>
+    <button id="btn-accept-all-left" class="toolbar-icon-btn" title="Apply non-conflicting changes from Left">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,3 8,8 3,13"/><polyline points="8,3 13,8 8,13"/></svg>
+      <span>Left</span>
+    </button>
+    <button id="btn-accept-all-both" class="toolbar-icon-btn" title="Apply non-conflicting changes from both sides">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,1 4,4 1,7"/><polyline points="4,1 7,4 4,7"/><polyline points="12,9 9,12 12,15"/><polyline points="15,9 12,12 15,15"/></svg>
+      <span>All</span>
+    </button>
+    <button id="btn-accept-all-right" class="toolbar-icon-btn" title="Apply non-conflicting changes from Right">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="13,3 8,8 13,13"/><polyline points="8,3 3,8 8,13"/></svg>
+      <span>Right</span>
+    </button>
+    <span class="toolbar-sep"></span>
+    <button id="btn-save" class="toolbar-icon-btn" title="Save resolved file">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,8 7,12 13,4"/></svg>
+    </button>
+    <button id="btn-collapse-unchanged" class="toolbar-icon-btn toolbar-toggle" title="Collapse unchanged fragments" aria-pressed="false">
+      <svg class="icon-collapse" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,2 8,6 13,2"/><polyline points="3,14 8,10 13,14"/><line x1="2" y1="8" x2="14" y2="8"/></svg>
+      <svg class="icon-expand"   viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,5 8,1 13,5"/><polyline points="3,11 8,15 13,11"/><line x1="2" y1="8" x2="14" y2="8"/></svg>
+    </button>
+    <button id="btn-sync-scroll" class="toolbar-icon-btn toolbar-toggle is-active" title="Synchronize scrolling between panes" aria-pressed="true">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="miter"><line x1="2.5" y1="2.5" x2="2.5" y2="13.5"/><polyline points="0.7,4.3 2.5,2.5 4.3,4.3"/><polyline points="0.7,11.7 2.5,13.5 4.3,11.7"/><line x1="13.5" y1="2.5" x2="13.5" y2="6"/><polyline points="11.7,4.3 13.5,2.5 15.3,4.3"/></svg>
+      <svg class="sync-loop-badge" viewBox="0 0 24 24" fill="none" stroke="#3794ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="miter"><path d="M7.3 10.3 A5 5 0 0 1 16.7 10.3"/><polyline points="14.89,9.45 16.7,10.3 17.55,8.49"/><path d="M16.7 13.7 A5 5 0 0 1 7.3 13.7"/><polyline points="9.11,14.55 7.3,13.7 6.45,15.51"/></svg>
+    </button>
+    <div class="spacer-fill"></div>
+    <span class="status" id="status">Loading…</span>
+  </div>
+  <div id="app">
+    <!-- Row 1: column headers, IntelliJ-style: padlock + bold primary + greyed secondary -->
+    <div class="col-header merge-header merge-header-local" style="grid-column: 1">
+      <span class="merge-header-lock" aria-hidden="true">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="10" height="7" rx="1"/><path d="M5 7 V5 a3 3 0 0 1 6 0 V7"/></svg>
+      </span>
+      <span class="merge-header-primary" id="merge-header-local-primary">Local</span>
+      <span class="merge-header-secondary" id="merge-header-local-secondary"></span>
+    </div>
+    <div class="col-header" style="grid-column: 2 / span 6"></div>
+    <div class="col-header merge-header merge-header-result" style="grid-column: 8">
+      <span class="merge-header-primary">Result</span>
+      <span class="merge-header-secondary" id="merge-header-result-secondary"></span>
+    </div>
+    <div class="col-header" style="grid-column: 9 / span 6"></div>
+    <div class="col-header merge-header merge-header-remote" style="grid-column: 15">
+      <span class="merge-header-lock" aria-hidden="true">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="10" height="7" rx="1"/><path d="M5 7 V5 a3 3 0 0 1 6 0 V7"/></svg>
+      </span>
+      <span class="merge-header-primary" id="merge-header-remote-primary">Remote</span>
+      <span class="merge-header-secondary" id="merge-header-remote-secondary"></span>
+    </div>
+
+    <!-- Row 2: content -->
+    <div class="editor-pane" id="pane-local" style="grid-column: 1"><div class="monaco-host" id="host-local"></div></div>
+    <div class="gutter-cell spacer-cell"   id="space-l1"     style="grid-column: 2"><div class="gutter-content"></div></div>
+    <div class="gutter-cell actions-cell"  id="actions-left" style="grid-column: 3"><div class="gutter-content"></div></div>
+    <div class="gutter-cell"               id="ln-local"     style="grid-column: 4"><div class="gutter-content"></div></div>
+    <div class="pipes-cell"                id="pipes-left"   style="grid-column: 5"><svg></svg></div>
+    <div class="gutter-cell"               id="ln-result-l"  style="grid-column: 6"><div class="gutter-content"></div></div>
+    <div class="gutter-cell spacer-cell"   id="space-l2"     style="grid-column: 7"><div class="gutter-content"></div></div>
+    <div class="editor-pane" id="pane-result" style="grid-column: 8"><div class="monaco-host" id="host-result"></div></div>
+    <div class="gutter-cell spacer-cell"   id="space-r1"     style="grid-column: 9"><div class="gutter-content"></div></div>
+    <div class="gutter-cell"               id="ln-result-r"  style="grid-column: 10"><div class="gutter-content"></div></div>
+    <div class="pipes-cell"                id="pipes-right"  style="grid-column: 11"><svg></svg></div>
+    <div class="gutter-cell"               id="ln-remote"    style="grid-column: 12"><div class="gutter-content"></div></div>
+    <div class="gutter-cell actions-cell"  id="actions-right" style="grid-column: 13"><div class="gutter-content"></div></div>
+    <div class="gutter-cell spacer-cell"   id="space-r2"     style="grid-column: 14"><div class="gutter-content"></div></div>
+    <div class="editor-pane" id="pane-remote" style="grid-column: 15"><div class="monaco-host" id="host-remote"></div></div>
+    <svg class="collapsed-band-overlay" id="collapsed-band-overlay"></svg>
+  </div>
+  <script src="{{SCRIPT_URI}}"></script>
+</body>
+</html>

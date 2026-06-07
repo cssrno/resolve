@@ -1,0 +1,483 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Golden HTML: diff view rendering pipeline > full #app innerHTML — mixed-with-staged > mixed-with-staged 1`] = `
+"<div id="app">
+<div class="col-header" data-col="head">Index</div>
+<div class="col-header" data-col="working">Working tree</div>
+<div class="editor-pane" id="diff-pane-head">
+<div class="monaco-host" id="diff-host-head">
+</div>
+</div>
+<div class="gutter-cell spacer-cell" id="diff-space-l">
+<div class="gutter-content">
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row mod hunk-edge-top hunk-edge-bottom is-unstaged" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-2-2">
+</div>
+<div class="ln-row marker-bottom-add" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-4-4">
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+</div>
+</div>
+<div class="gutter-cell actions-cell" id="diff-actions-revert">
+<div class="gutter-content">
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row mod hunk-edge-top hunk-edge-bottom is-unstaged" style="height: 18px; line-height: 18px; position: relative; overflow: visible;" data-hunk-id="hunk-2-2">
+<div class="diff-zone-actions" style="top: 50%; transform: translate(-50%, -50%);">
+<button class="icon-btn" title="Revert this change">
+<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+<polyline points="3,3 8,8 3,13">
+</polyline>
+<polyline points="8,3 13,8 8,13">
+</polyline>
+</svg>
+</button>
+</div>
+</div>
+<div class="ln-row marker-bottom-add" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px; position: relative; overflow: visible;" data-hunk-id="hunk-4-4">
+<div class="diff-zone-actions" style="top: 50%; transform: translate(-50%, -50%);">
+<button class="icon-btn" title="Revert this change">
+<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+<polyline points="3,3 8,8 3,13">
+</polyline>
+<polyline points="8,3 13,8 8,13">
+</polyline>
+</svg>
+</button>
+</div>
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+</div>
+</div>
+<div class="gutter-cell" id="diff-ln-head">
+<div class="gutter-content">
+<div class="ln-row" style="height: 18px; line-height: 18px;">1</div>
+<div class="ln-row mod hunk-edge-top hunk-edge-bottom is-unstaged" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-2-2">2</div>
+<div class="ln-row marker-bottom-add" style="height: 18px; line-height: 18px;">3</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-4-4">4</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">5</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">6</div>
+</div>
+</div>
+<div class="pipes-cell" id="diff-pipes">
+<svg viewBox="0 0 100 100">
+<path d="M 0 18 L 15 18 C 50 18, 50 18, 85 18 L 100 18 L 100 36 L 85 36 C 50 36, 50 36, 15 36 L 0 36 Z" fill="rgba(80, 150, 240, 0.13)" stroke="none">
+</path>
+<path d="M 0 18 L 15 18 C 50 18, 50 18, 85 18 L 100 18" fill="none" stroke="rgba(80, 150, 240, 0.26)" stroke-width="1.25" stroke-linecap="butt">
+</path>
+<path d="M 0 36 L 15 36 C 50 36, 50 36, 85 36 L 100 36" fill="none" stroke="rgba(80, 150, 240, 0.26)" stroke-width="1.25" stroke-linecap="butt">
+</path>
+<path d="M 0 51 L 15 51 C 50 51, 50 54, 85 54 L 100 54 L 100 72 L 85 72 C 50 72, 50 54, 15 54 L 0 54 Z" fill="rgba(60, 200, 100, 0.26)" stroke="none">
+</path>
+<path d="M 0 51 L 15 51 C 50 51, 50 54, 85 54 L 100 54" fill="none" stroke="rgba(0, 0, 0, 0)" stroke-width="1.25" stroke-linecap="butt">
+</path>
+<path d="M 0 54 L 15 54 C 50 54, 50 72, 85 72 L 100 72" fill="none" stroke="rgba(0, 0, 0, 0)" stroke-width="1.25" stroke-linecap="butt">
+</path>
+</svg>
+</div>
+<div class="gutter-cell" id="diff-ln-working">
+<div class="gutter-content">
+<div class="ln-row" style="height: 18px; line-height: 18px;">1</div>
+<div class="ln-row mod hunk-edge-top hunk-edge-bottom is-unstaged" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-2-2">2</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">3</div>
+<div class="ln-row add hunk-edge-top hunk-edge-bottom" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-4-4">4</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">5</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">6</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">7</div>
+</div>
+</div>
+<div class="gutter-cell actions-cell" id="diff-actions-stage">
+<div class="gutter-content">
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row mod hunk-edge-top hunk-edge-bottom is-unstaged" style="height: 18px; line-height: 18px; position: relative; overflow: visible;" data-hunk-id="hunk-2-2">
+<div class="diff-zone-actions" style="top: 50%; transform: translate(-50%, -50%);">
+<label class="stage-checkbox" title="Stage this change">
+<input type="checkbox">
+</label>
+</div>
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row add hunk-edge-top hunk-edge-bottom" style="height: 18px; line-height: 18px; position: relative; overflow: visible;" data-hunk-id="hunk-4-4">
+<div class="diff-zone-actions" style="top: 50%; transform: translate(-50%, -50%);">
+<label class="stage-checkbox" title="Unstage this change">
+<input type="checkbox">
+</label>
+</div>
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+</div>
+</div>
+<div class="gutter-cell spacer-cell" id="diff-space-r">
+<div class="gutter-content">
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row mod hunk-edge-top hunk-edge-bottom is-unstaged" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-2-2">
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row add hunk-edge-top hunk-edge-bottom" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-4-4">
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+</div>
+</div>
+<div class="editor-pane" id="diff-pane-working">
+<div class="monaco-host" id="diff-host-working">
+</div>
+</div>
+</div>"
+`;
+
+exports[`Golden HTML: diff view rendering pipeline > full #app innerHTML — single-add-hunk > single-add-hunk 1`] = `
+"<div id="app">
+<div class="col-header" data-col="head">Index</div>
+<div class="col-header" data-col="working">Working tree</div>
+<div class="editor-pane" id="diff-pane-head">
+<div class="monaco-host" id="diff-host-head">
+</div>
+</div>
+<div class="gutter-cell spacer-cell" id="diff-space-l">
+<div class="gutter-content">
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row marker-bottom-add" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-4-4">
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+</div>
+</div>
+<div class="gutter-cell actions-cell" id="diff-actions-revert">
+<div class="gutter-content">
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row marker-bottom-add" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px; position: relative; overflow: visible;" data-hunk-id="hunk-4-4">
+<div class="diff-zone-actions" style="top: 50%; transform: translate(-50%, -50%);">
+<button class="icon-btn" title="Revert this change">
+<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+<polyline points="3,3 8,8 3,13">
+</polyline>
+<polyline points="8,3 13,8 8,13">
+</polyline>
+</svg>
+</button>
+</div>
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+</div>
+</div>
+<div class="gutter-cell" id="diff-ln-head">
+<div class="gutter-content">
+<div class="ln-row" style="height: 18px; line-height: 18px;">1</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">2</div>
+<div class="ln-row marker-bottom-add" style="height: 18px; line-height: 18px;">3</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-4-4">4</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">5</div>
+</div>
+</div>
+<div class="pipes-cell" id="diff-pipes">
+<svg viewBox="0 0 100 100">
+<path d="M 0 51 L 15 51 C 50 51, 50 54, 85 54 L 100 54 L 100 72 L 85 72 C 50 72, 50 54, 15 54 L 0 54 Z" fill="rgba(60, 200, 100, 0.13)" stroke="none">
+</path>
+<path d="M 0 51 L 15 51 C 50 51, 50 54, 85 54 L 100 54" fill="none" stroke="rgba(60, 200, 100, 0.26)" stroke-width="1.25" stroke-linecap="butt">
+</path>
+<path d="M 0 54 L 15 54 C 50 54, 50 72, 85 72 L 100 72" fill="none" stroke="rgba(60, 200, 100, 0.26)" stroke-width="1.25" stroke-linecap="butt">
+</path>
+</svg>
+</div>
+<div class="gutter-cell" id="diff-ln-working">
+<div class="gutter-content">
+<div class="ln-row" style="height: 18px; line-height: 18px;">1</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">2</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">3</div>
+<div class="ln-row add hunk-edge-top hunk-edge-bottom is-unstaged" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-4-4">4</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">5</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">6</div>
+</div>
+</div>
+<div class="gutter-cell actions-cell" id="diff-actions-stage">
+<div class="gutter-content">
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row add hunk-edge-top hunk-edge-bottom is-unstaged" style="height: 18px; line-height: 18px; position: relative; overflow: visible;" data-hunk-id="hunk-4-4">
+<div class="diff-zone-actions" style="top: 50%; transform: translate(-50%, -50%);">
+<label class="stage-checkbox" title="Stage this change">
+<input type="checkbox">
+</label>
+</div>
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+</div>
+</div>
+<div class="gutter-cell spacer-cell" id="diff-space-r">
+<div class="gutter-content">
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row add hunk-edge-top hunk-edge-bottom is-unstaged" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-4-4">
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+</div>
+</div>
+<div class="editor-pane" id="diff-pane-working">
+<div class="monaco-host" id="diff-host-working">
+</div>
+</div>
+</div>"
+`;
+
+exports[`Golden HTML: diff view rendering pipeline > full #app innerHTML — single-del-hunk > single-del-hunk 1`] = `
+"<div id="app">
+<div class="col-header" data-col="head">Index</div>
+<div class="col-header" data-col="working">Working tree</div>
+<div class="editor-pane" id="diff-pane-head">
+<div class="monaco-host" id="diff-host-head">
+</div>
+</div>
+<div class="gutter-cell spacer-cell" id="diff-space-l">
+<div class="gutter-content">
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row del hunk-edge-top is-unstaged" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-2-2">
+</div>
+<div class="ln-row del is-unstaged" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row del hunk-edge-bottom is-unstaged" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+</div>
+</div>
+<div class="gutter-cell actions-cell" id="diff-actions-revert">
+<div class="gutter-content">
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row del hunk-edge-top is-unstaged" style="height: 18px; line-height: 18px; position: relative; overflow: visible;" data-hunk-id="hunk-2-2">
+<div class="diff-zone-actions" style="top: 50%; transform: translate(-50%, -50%);">
+<button class="icon-btn" title="Revert this change">
+<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+<polyline points="3,3 8,8 3,13">
+</polyline>
+<polyline points="8,3 13,8 8,13">
+</polyline>
+</svg>
+</button>
+</div>
+</div>
+<div class="ln-row del is-unstaged" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row del hunk-edge-bottom is-unstaged" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+</div>
+</div>
+<div class="gutter-cell" id="diff-ln-head">
+<div class="gutter-content">
+<div class="ln-row" style="height: 18px; line-height: 18px;">1</div>
+<div class="ln-row del hunk-edge-top is-unstaged" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-2-2">2</div>
+<div class="ln-row del is-unstaged" style="height: 18px; line-height: 18px;">3</div>
+<div class="ln-row del hunk-edge-bottom is-unstaged" style="height: 18px; line-height: 18px;">4</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">5</div>
+</div>
+</div>
+<div class="pipes-cell" id="diff-pipes">
+<svg viewBox="0 0 100 100">
+<path d="M 0 18 L 15 18 C 50 18, 50 15, 85 15 L 100 15 L 100 18 L 85 18 C 50 18, 50 72, 15 72 L 0 72 Z" fill="rgba(160, 160, 160, 0.20)" stroke="none">
+</path>
+<path d="M 0 18 L 15 18 C 50 18, 50 15, 85 15 L 100 15" fill="none" stroke="rgba(160, 160, 160, 0.40)" stroke-width="1.25" stroke-linecap="butt">
+</path>
+<path d="M 0 72 L 15 72 C 50 72, 50 18, 85 18 L 100 18" fill="none" stroke="rgba(160, 160, 160, 0.40)" stroke-width="1.25" stroke-linecap="butt">
+</path>
+</svg>
+</div>
+<div class="gutter-cell" id="diff-ln-working">
+<div class="gutter-content">
+<div class="ln-row marker-bottom-del" style="height: 18px; line-height: 18px;">1</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-2-2">2</div>
+</div>
+</div>
+<div class="gutter-cell actions-cell" id="diff-actions-stage">
+<div class="gutter-content">
+<div class="ln-row marker-bottom-del" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px; position: relative; overflow: visible;" data-hunk-id="hunk-2-2">
+<div class="diff-zone-actions" style="top: 50%; transform: translate(-50%, -50%);">
+<label class="stage-checkbox" title="Stage this change">
+<input type="checkbox">
+</label>
+</div>
+</div>
+</div>
+</div>
+<div class="gutter-cell spacer-cell" id="diff-space-r">
+<div class="gutter-content">
+<div class="ln-row marker-bottom-del" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-2-2">
+</div>
+</div>
+</div>
+<div class="editor-pane" id="diff-pane-working">
+<div class="monaco-host" id="diff-host-working">
+</div>
+</div>
+</div>"
+`;
+
+exports[`Golden HTML: diff view rendering pipeline > full #app innerHTML — single-mod-hunk > single-mod-hunk 1`] = `
+"<div id="app">
+<div class="col-header" data-col="head">Index</div>
+<div class="col-header" data-col="working">Working tree</div>
+<div class="editor-pane" id="diff-pane-head">
+<div class="monaco-host" id="diff-host-head">
+</div>
+</div>
+<div class="gutter-cell spacer-cell" id="diff-space-l">
+<div class="gutter-content">
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row mod hunk-edge-top hunk-edge-bottom is-unstaged" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-3-3">
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+</div>
+</div>
+<div class="gutter-cell actions-cell" id="diff-actions-revert">
+<div class="gutter-content">
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row mod hunk-edge-top hunk-edge-bottom is-unstaged" style="height: 18px; line-height: 18px; position: relative; overflow: visible;" data-hunk-id="hunk-3-3">
+<div class="diff-zone-actions" style="top: 50%; transform: translate(-50%, -50%);">
+<button class="icon-btn" title="Revert this change">
+<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+<polyline points="3,3 8,8 3,13">
+</polyline>
+<polyline points="8,3 13,8 8,13">
+</polyline>
+</svg>
+</button>
+</div>
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+</div>
+</div>
+<div class="gutter-cell" id="diff-ln-head">
+<div class="gutter-content">
+<div class="ln-row" style="height: 18px; line-height: 18px;">1</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">2</div>
+<div class="ln-row mod hunk-edge-top hunk-edge-bottom is-unstaged" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-3-3">3</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">4</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">5</div>
+</div>
+</div>
+<div class="pipes-cell" id="diff-pipes">
+<svg viewBox="0 0 100 100">
+<path d="M 0 36 L 15 36 C 50 36, 50 36, 85 36 L 100 36 L 100 54 L 85 54 C 50 54, 50 54, 15 54 L 0 54 Z" fill="rgba(80, 150, 240, 0.13)" stroke="none">
+</path>
+<path d="M 0 36 L 15 36 C 50 36, 50 36, 85 36 L 100 36" fill="none" stroke="rgba(80, 150, 240, 0.26)" stroke-width="1.25" stroke-linecap="butt">
+</path>
+<path d="M 0 54 L 15 54 C 50 54, 50 54, 85 54 L 100 54" fill="none" stroke="rgba(80, 150, 240, 0.26)" stroke-width="1.25" stroke-linecap="butt">
+</path>
+</svg>
+</div>
+<div class="gutter-cell" id="diff-ln-working">
+<div class="gutter-content">
+<div class="ln-row" style="height: 18px; line-height: 18px;">1</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">2</div>
+<div class="ln-row mod hunk-edge-top hunk-edge-bottom is-unstaged" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-3-3">3</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">4</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">5</div>
+</div>
+</div>
+<div class="gutter-cell actions-cell" id="diff-actions-stage">
+<div class="gutter-content">
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row mod hunk-edge-top hunk-edge-bottom is-unstaged" style="height: 18px; line-height: 18px; position: relative; overflow: visible;" data-hunk-id="hunk-3-3">
+<div class="diff-zone-actions" style="top: 50%; transform: translate(-50%, -50%);">
+<label class="stage-checkbox" title="Stage this change">
+<input type="checkbox">
+</label>
+</div>
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+</div>
+</div>
+<div class="gutter-cell spacer-cell" id="diff-space-r">
+<div class="gutter-content">
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row mod hunk-edge-top hunk-edge-bottom is-unstaged" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-3-3">
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;">
+</div>
+</div>
+</div>
+<div class="editor-pane" id="diff-pane-working">
+<div class="monaco-host" id="diff-host-working">
+</div>
+</div>
+</div>"
+`;

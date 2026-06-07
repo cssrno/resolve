@@ -1,0 +1,2213 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Golden: Sections pipeline over fixtures/conflicts/golden.ts > classifies every block to a stable BlockClass > classification 1`] = `
+[
+  {
+    "blockClass": "localAdd",
+    "blockId": "block-14-18",
+    "idx": 1,
+    "localLines": 1,
+    "paneClass": {
+      "local": "add",
+      "remote": "",
+      "result": "add",
+    },
+    "remoteLines": 0,
+    "resultLines": 0,
+  },
+  {
+    "blockClass": "remoteAdd",
+    "blockId": "block-21-25",
+    "idx": 2,
+    "localLines": 0,
+    "paneClass": {
+      "local": "",
+      "remote": "add",
+      "result": "add",
+    },
+    "remoteLines": 1,
+    "resultLines": 0,
+  },
+  {
+    "blockClass": "conflict",
+    "blockId": "block-28-34",
+    "idx": 3,
+    "localLines": 2,
+    "paneClass": {
+      "local": "conflict",
+      "remote": "conflict",
+      "result": "result-unresolved",
+    },
+    "remoteLines": 2,
+    "resultLines": 2,
+  },
+  {
+    "blockClass": "localMod",
+    "blockId": "block-40-46",
+    "idx": 4,
+    "localLines": 1,
+    "paneClass": {
+      "local": "mod",
+      "remote": "",
+      "result": "mod",
+    },
+    "remoteLines": 1,
+    "resultLines": 1,
+  },
+  {
+    "blockClass": "remoteMod",
+    "blockId": "block-49-55",
+    "idx": 5,
+    "localLines": 1,
+    "paneClass": {
+      "local": "",
+      "remote": "mod",
+      "result": "mod",
+    },
+    "remoteLines": 1,
+    "resultLines": 1,
+  },
+  {
+    "blockClass": "localDel",
+    "blockId": "block-58-65",
+    "idx": 6,
+    "localLines": 0,
+    "paneClass": {
+      "local": "",
+      "remote": "",
+      "result": "del",
+    },
+    "remoteLines": 2,
+    "resultLines": 2,
+  },
+  {
+    "blockClass": "remoteDel",
+    "blockId": "block-68-75",
+    "idx": 7,
+    "localLines": 2,
+    "paneClass": {
+      "local": "",
+      "remote": "",
+      "result": "del",
+    },
+    "remoteLines": 0,
+    "resultLines": 2,
+  },
+  {
+    "blockClass": "localAdd",
+    "blockId": "block-84-90",
+    "idx": 8,
+    "localLines": 3,
+    "paneClass": {
+      "local": "add",
+      "remote": "",
+      "result": "add",
+    },
+    "remoteLines": 0,
+    "resultLines": 0,
+  },
+  {
+    "blockClass": "remoteAdd",
+    "blockId": "block-92-97",
+    "idx": 9,
+    "localLines": 0,
+    "paneClass": {
+      "local": "",
+      "remote": "add",
+      "result": "add",
+    },
+    "remoteLines": 2,
+    "resultLines": 0,
+  },
+  {
+    "blockClass": "conflict",
+    "blockId": "block-102-115",
+    "idx": 10,
+    "localLines": 5,
+    "paneClass": {
+      "local": "conflict",
+      "remote": "conflict",
+      "result": "result-unresolved",
+    },
+    "remoteLines": 4,
+    "resultLines": 5,
+  },
+  {
+    "blockClass": "localMod",
+    "blockId": "block-120-128",
+    "idx": 11,
+    "localLines": 3,
+    "paneClass": {
+      "local": "mod",
+      "remote": "",
+      "result": "mod",
+    },
+    "remoteLines": 1,
+    "resultLines": 1,
+  },
+  {
+    "blockClass": "remoteMod",
+    "blockId": "block-133-147",
+    "idx": 12,
+    "localLines": 2,
+    "paneClass": {
+      "local": "",
+      "remote": "mod",
+      "result": "mod",
+    },
+    "remoteLines": 7,
+    "resultLines": 2,
+  },
+  {
+    "blockClass": "localAdd",
+    "blockId": "block-151-165",
+    "idx": 13,
+    "localLines": 11,
+    "paneClass": {
+      "local": "add",
+      "remote": "",
+      "result": "add",
+    },
+    "remoteLines": 0,
+    "resultLines": 0,
+  },
+  {
+    "blockClass": "remoteAdd",
+    "blockId": "block-168-185",
+    "idx": 14,
+    "localLines": 0,
+    "paneClass": {
+      "local": "",
+      "remote": "add",
+      "result": "add",
+    },
+    "remoteLines": 14,
+    "resultLines": 0,
+  },
+  {
+    "blockClass": "localDel",
+    "blockId": "block-188-209",
+    "idx": 15,
+    "localLines": 0,
+    "paneClass": {
+      "local": "",
+      "remote": "",
+      "result": "del",
+    },
+    "remoteLines": 9,
+    "resultLines": 9,
+  },
+  {
+    "blockClass": "remoteDel",
+    "blockId": "block-212-225",
+    "idx": 16,
+    "localLines": 5,
+    "paneClass": {
+      "local": "",
+      "remote": "",
+      "result": "del",
+    },
+    "remoteLines": 0,
+    "resultLines": 5,
+  },
+  {
+    "blockClass": "conflict",
+    "blockId": "block-232-236",
+    "idx": 17,
+    "localLines": 1,
+    "paneClass": {
+      "local": "conflict",
+      "remote": "conflict",
+      "result": "result-unresolved",
+    },
+    "remoteLines": 1,
+    "resultLines": 1,
+  },
+  {
+    "blockClass": "localMod",
+    "blockId": "block-240-246",
+    "idx": 18,
+    "localLines": 1,
+    "paneClass": {
+      "local": "mod",
+      "remote": "",
+      "result": "mod",
+    },
+    "remoteLines": 1,
+    "resultLines": 1,
+  },
+  {
+    "blockClass": "localAdd",
+    "blockId": "block-248-252",
+    "idx": 19,
+    "localLines": 1,
+    "paneClass": {
+      "local": "add",
+      "remote": "",
+      "result": "add",
+    },
+    "remoteLines": 0,
+    "resultLines": 0,
+  },
+]
+`;
+
+exports[`Golden: Sections pipeline over fixtures/conflicts/golden.ts > pane texts + states under accept-both-everywhere > accept-both-everywhere 1`] = `
+{
+  "blocks": [
+    {
+      "blockClass": "localAdd",
+      "blockId": "block-14-18",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 1,
+        "remote": 0,
+        "result": 1,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "remoteAdd",
+      "blockId": "block-21-25",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 0,
+        "remote": 1,
+        "result": 1,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "conflict",
+      "blockId": "block-28-34",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 2,
+        "remote": 2,
+        "result": 4,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "localMod",
+      "blockId": "block-40-46",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 1,
+        "remote": 1,
+        "result": 2,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "remoteMod",
+      "blockId": "block-49-55",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 1,
+        "remote": 1,
+        "result": 2,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "localDel",
+      "blockId": "block-58-65",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 0,
+        "remote": 2,
+        "result": 2,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "remoteDel",
+      "blockId": "block-68-75",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 2,
+        "remote": 0,
+        "result": 2,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "localAdd",
+      "blockId": "block-84-90",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 3,
+        "remote": 0,
+        "result": 3,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "remoteAdd",
+      "blockId": "block-92-97",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 0,
+        "remote": 2,
+        "result": 2,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "conflict",
+      "blockId": "block-102-115",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 5,
+        "remote": 4,
+        "result": 9,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "localMod",
+      "blockId": "block-120-128",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 3,
+        "remote": 1,
+        "result": 4,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "remoteMod",
+      "blockId": "block-133-147",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 2,
+        "remote": 7,
+        "result": 9,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "localAdd",
+      "blockId": "block-151-165",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 11,
+        "remote": 0,
+        "result": 11,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "remoteAdd",
+      "blockId": "block-168-185",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 0,
+        "remote": 14,
+        "result": 14,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "localDel",
+      "blockId": "block-188-209",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 0,
+        "remote": 9,
+        "result": 9,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "remoteDel",
+      "blockId": "block-212-225",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 5,
+        "remote": 0,
+        "result": 5,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "conflict",
+      "blockId": "block-232-236",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 1,
+        "remote": 1,
+        "result": 2,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "localMod",
+      "blockId": "block-240-246",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 1,
+        "remote": 1,
+        "result": 2,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "localAdd",
+      "blockId": "block-248-252",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 1,
+        "remote": 0,
+        "result": 1,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+  ],
+  "panes": {
+    "local": 112,
+    "remote": 119,
+    "result": 158,
+  },
+}
+`;
+
+exports[`Golden: Sections pipeline over fixtures/conflicts/golden.ts > pane texts + states under accept-left-everywhere > accept-left-everywhere 1`] = `
+{
+  "blocks": [
+    {
+      "blockClass": "localAdd",
+      "blockId": "block-14-18",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 1,
+        "remote": 0,
+        "result": 1,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "remoteAdd",
+      "blockId": "block-21-25",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 0,
+        "remote": 1,
+        "result": 1,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "conflict",
+      "blockId": "block-28-34",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 2,
+        "remote": 2,
+        "result": 2,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "localMod",
+      "blockId": "block-40-46",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 1,
+        "remote": 1,
+        "result": 1,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "remoteMod",
+      "blockId": "block-49-55",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 1,
+        "remote": 1,
+        "result": 1,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "localDel",
+      "blockId": "block-58-65",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 0,
+        "remote": 2,
+        "result": 2,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "remoteDel",
+      "blockId": "block-68-75",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 2,
+        "remote": 0,
+        "result": 2,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "localAdd",
+      "blockId": "block-84-90",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 3,
+        "remote": 0,
+        "result": 3,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "remoteAdd",
+      "blockId": "block-92-97",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 0,
+        "remote": 2,
+        "result": 2,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "conflict",
+      "blockId": "block-102-115",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 5,
+        "remote": 4,
+        "result": 5,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "localMod",
+      "blockId": "block-120-128",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 3,
+        "remote": 1,
+        "result": 3,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "remoteMod",
+      "blockId": "block-133-147",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 2,
+        "remote": 7,
+        "result": 2,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "localAdd",
+      "blockId": "block-151-165",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 11,
+        "remote": 0,
+        "result": 11,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "remoteAdd",
+      "blockId": "block-168-185",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 0,
+        "remote": 14,
+        "result": 14,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "localDel",
+      "blockId": "block-188-209",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 0,
+        "remote": 9,
+        "result": 9,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "remoteDel",
+      "blockId": "block-212-225",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 5,
+        "remote": 0,
+        "result": 5,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "conflict",
+      "blockId": "block-232-236",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 1,
+        "remote": 1,
+        "result": 1,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "localMod",
+      "blockId": "block-240-246",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 1,
+        "remote": 1,
+        "result": 1,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "localAdd",
+      "blockId": "block-248-252",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 1,
+        "remote": 0,
+        "result": 1,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+  ],
+  "panes": {
+    "local": 112,
+    "remote": 119,
+    "result": 140,
+  },
+}
+`;
+
+exports[`Golden: Sections pipeline over fixtures/conflicts/golden.ts > pane texts + states under accept-right-everywhere > accept-right-everywhere 1`] = `
+{
+  "blocks": [
+    {
+      "blockClass": "localAdd",
+      "blockId": "block-14-18",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 1,
+        "remote": 0,
+        "result": 1,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "remoteAdd",
+      "blockId": "block-21-25",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 0,
+        "remote": 1,
+        "result": 1,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "conflict",
+      "blockId": "block-28-34",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 2,
+        "remote": 2,
+        "result": 2,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "localMod",
+      "blockId": "block-40-46",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 1,
+        "remote": 1,
+        "result": 1,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "remoteMod",
+      "blockId": "block-49-55",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 1,
+        "remote": 1,
+        "result": 1,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "localDel",
+      "blockId": "block-58-65",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 0,
+        "remote": 2,
+        "result": 2,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "remoteDel",
+      "blockId": "block-68-75",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 2,
+        "remote": 0,
+        "result": 2,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "localAdd",
+      "blockId": "block-84-90",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 3,
+        "remote": 0,
+        "result": 3,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "remoteAdd",
+      "blockId": "block-92-97",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 0,
+        "remote": 2,
+        "result": 2,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "conflict",
+      "blockId": "block-102-115",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 5,
+        "remote": 4,
+        "result": 4,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "localMod",
+      "blockId": "block-120-128",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 3,
+        "remote": 1,
+        "result": 1,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "remoteMod",
+      "blockId": "block-133-147",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 2,
+        "remote": 7,
+        "result": 7,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "localAdd",
+      "blockId": "block-151-165",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 11,
+        "remote": 0,
+        "result": 11,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "remoteAdd",
+      "blockId": "block-168-185",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 0,
+        "remote": 14,
+        "result": 14,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "localDel",
+      "blockId": "block-188-209",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 0,
+        "remote": 9,
+        "result": 9,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "remoteDel",
+      "blockId": "block-212-225",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 5,
+        "remote": 0,
+        "result": 5,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "conflict",
+      "blockId": "block-232-236",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 1,
+        "remote": 1,
+        "result": 1,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "localMod",
+      "blockId": "block-240-246",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 1,
+        "remote": 1,
+        "result": 1,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "localAdd",
+      "blockId": "block-248-252",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 1,
+        "remote": 0,
+        "result": 1,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+  ],
+  "panes": {
+    "local": 112,
+    "remote": 119,
+    "result": 142,
+  },
+}
+`;
+
+exports[`Golden: Sections pipeline over fixtures/conflicts/golden.ts > pane texts + states under mixed-per-block > mixed-per-block 1`] = `
+{
+  "blocks": [
+    {
+      "blockClass": "localAdd",
+      "blockId": "block-14-18",
+      "paneClass": {
+        "local": "add",
+        "remote": "",
+        "result": "add",
+      },
+      "paneLineCount": {
+        "local": 1,
+        "remote": 0,
+        "result": 0,
+      },
+      "resolved": false,
+      "resolvedSides": {
+        "local": false,
+        "remote": false,
+        "result": false,
+      },
+    },
+    {
+      "blockClass": "remoteAdd",
+      "blockId": "block-21-25",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 0,
+        "remote": 1,
+        "result": 1,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "conflict",
+      "blockId": "block-28-34",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 2,
+        "remote": 2,
+        "result": 2,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "localMod",
+      "blockId": "block-40-46",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 1,
+        "remote": 1,
+        "result": 2,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "remoteMod",
+      "blockId": "block-49-55",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 1,
+        "remote": 1,
+        "result": 1,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "localDel",
+      "blockId": "block-58-65",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "del",
+      },
+      "paneLineCount": {
+        "local": 0,
+        "remote": 2,
+        "result": 2,
+      },
+      "resolved": false,
+      "resolvedSides": {
+        "local": false,
+        "remote": false,
+        "result": false,
+      },
+    },
+    {
+      "blockClass": "remoteDel",
+      "blockId": "block-68-75",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 2,
+        "remote": 0,
+        "result": 2,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "localAdd",
+      "blockId": "block-84-90",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 3,
+        "remote": 0,
+        "result": 3,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "remoteAdd",
+      "blockId": "block-92-97",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 0,
+        "remote": 2,
+        "result": 2,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "conflict",
+      "blockId": "block-102-115",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 5,
+        "remote": 4,
+        "result": 1,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "localMod",
+      "blockId": "block-120-128",
+      "paneClass": {
+        "local": "mod",
+        "remote": "",
+        "result": "mod",
+      },
+      "paneLineCount": {
+        "local": 3,
+        "remote": 1,
+        "result": 1,
+      },
+      "resolved": false,
+      "resolvedSides": {
+        "local": false,
+        "remote": false,
+        "result": false,
+      },
+    },
+    {
+      "blockClass": "remoteMod",
+      "blockId": "block-133-147",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 2,
+        "remote": 7,
+        "result": 2,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "localAdd",
+      "blockId": "block-151-165",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 11,
+        "remote": 0,
+        "result": 11,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "remoteAdd",
+      "blockId": "block-168-185",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 0,
+        "remote": 14,
+        "result": 14,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "localDel",
+      "blockId": "block-188-209",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 0,
+        "remote": 9,
+        "result": 1,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "remoteDel",
+      "blockId": "block-212-225",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "del",
+      },
+      "paneLineCount": {
+        "local": 5,
+        "remote": 0,
+        "result": 5,
+      },
+      "resolved": false,
+      "resolvedSides": {
+        "local": false,
+        "remote": false,
+        "result": false,
+      },
+    },
+    {
+      "blockClass": "conflict",
+      "blockId": "block-232-236",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 1,
+        "remote": 1,
+        "result": 1,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "localMod",
+      "blockId": "block-240-246",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 1,
+        "remote": 1,
+        "result": 1,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+    {
+      "blockClass": "localAdd",
+      "blockId": "block-248-252",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "",
+      },
+      "paneLineCount": {
+        "local": 1,
+        "remote": 0,
+        "result": 1,
+      },
+      "resolved": true,
+      "resolvedSides": {
+        "local": true,
+        "remote": true,
+        "result": true,
+      },
+    },
+  ],
+  "panes": {
+    "local": 112,
+    "remote": 119,
+    "result": 126,
+  },
+}
+`;
+
+exports[`Golden: Sections pipeline over fixtures/conflicts/golden.ts > pane texts + states under unresolved > unresolved 1`] = `
+{
+  "blocks": [
+    {
+      "blockClass": "localAdd",
+      "blockId": "block-14-18",
+      "paneClass": {
+        "local": "add",
+        "remote": "",
+        "result": "add",
+      },
+      "paneLineCount": {
+        "local": 1,
+        "remote": 0,
+        "result": 0,
+      },
+      "resolved": false,
+      "resolvedSides": {
+        "local": false,
+        "remote": false,
+        "result": false,
+      },
+    },
+    {
+      "blockClass": "remoteAdd",
+      "blockId": "block-21-25",
+      "paneClass": {
+        "local": "",
+        "remote": "add",
+        "result": "add",
+      },
+      "paneLineCount": {
+        "local": 0,
+        "remote": 1,
+        "result": 0,
+      },
+      "resolved": false,
+      "resolvedSides": {
+        "local": false,
+        "remote": false,
+        "result": false,
+      },
+    },
+    {
+      "blockClass": "conflict",
+      "blockId": "block-28-34",
+      "paneClass": {
+        "local": "conflict",
+        "remote": "conflict",
+        "result": "result-unresolved",
+      },
+      "paneLineCount": {
+        "local": 2,
+        "remote": 2,
+        "result": 2,
+      },
+      "resolved": false,
+      "resolvedSides": {
+        "local": false,
+        "remote": false,
+        "result": false,
+      },
+    },
+    {
+      "blockClass": "localMod",
+      "blockId": "block-40-46",
+      "paneClass": {
+        "local": "mod",
+        "remote": "",
+        "result": "mod",
+      },
+      "paneLineCount": {
+        "local": 1,
+        "remote": 1,
+        "result": 1,
+      },
+      "resolved": false,
+      "resolvedSides": {
+        "local": false,
+        "remote": false,
+        "result": false,
+      },
+    },
+    {
+      "blockClass": "remoteMod",
+      "blockId": "block-49-55",
+      "paneClass": {
+        "local": "",
+        "remote": "mod",
+        "result": "mod",
+      },
+      "paneLineCount": {
+        "local": 1,
+        "remote": 1,
+        "result": 1,
+      },
+      "resolved": false,
+      "resolvedSides": {
+        "local": false,
+        "remote": false,
+        "result": false,
+      },
+    },
+    {
+      "blockClass": "localDel",
+      "blockId": "block-58-65",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "del",
+      },
+      "paneLineCount": {
+        "local": 0,
+        "remote": 2,
+        "result": 2,
+      },
+      "resolved": false,
+      "resolvedSides": {
+        "local": false,
+        "remote": false,
+        "result": false,
+      },
+    },
+    {
+      "blockClass": "remoteDel",
+      "blockId": "block-68-75",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "del",
+      },
+      "paneLineCount": {
+        "local": 2,
+        "remote": 0,
+        "result": 2,
+      },
+      "resolved": false,
+      "resolvedSides": {
+        "local": false,
+        "remote": false,
+        "result": false,
+      },
+    },
+    {
+      "blockClass": "localAdd",
+      "blockId": "block-84-90",
+      "paneClass": {
+        "local": "add",
+        "remote": "",
+        "result": "add",
+      },
+      "paneLineCount": {
+        "local": 3,
+        "remote": 0,
+        "result": 0,
+      },
+      "resolved": false,
+      "resolvedSides": {
+        "local": false,
+        "remote": false,
+        "result": false,
+      },
+    },
+    {
+      "blockClass": "remoteAdd",
+      "blockId": "block-92-97",
+      "paneClass": {
+        "local": "",
+        "remote": "add",
+        "result": "add",
+      },
+      "paneLineCount": {
+        "local": 0,
+        "remote": 2,
+        "result": 0,
+      },
+      "resolved": false,
+      "resolvedSides": {
+        "local": false,
+        "remote": false,
+        "result": false,
+      },
+    },
+    {
+      "blockClass": "conflict",
+      "blockId": "block-102-115",
+      "paneClass": {
+        "local": "conflict",
+        "remote": "conflict",
+        "result": "result-unresolved",
+      },
+      "paneLineCount": {
+        "local": 5,
+        "remote": 4,
+        "result": 5,
+      },
+      "resolved": false,
+      "resolvedSides": {
+        "local": false,
+        "remote": false,
+        "result": false,
+      },
+    },
+    {
+      "blockClass": "localMod",
+      "blockId": "block-120-128",
+      "paneClass": {
+        "local": "mod",
+        "remote": "",
+        "result": "mod",
+      },
+      "paneLineCount": {
+        "local": 3,
+        "remote": 1,
+        "result": 1,
+      },
+      "resolved": false,
+      "resolvedSides": {
+        "local": false,
+        "remote": false,
+        "result": false,
+      },
+    },
+    {
+      "blockClass": "remoteMod",
+      "blockId": "block-133-147",
+      "paneClass": {
+        "local": "",
+        "remote": "mod",
+        "result": "mod",
+      },
+      "paneLineCount": {
+        "local": 2,
+        "remote": 7,
+        "result": 2,
+      },
+      "resolved": false,
+      "resolvedSides": {
+        "local": false,
+        "remote": false,
+        "result": false,
+      },
+    },
+    {
+      "blockClass": "localAdd",
+      "blockId": "block-151-165",
+      "paneClass": {
+        "local": "add",
+        "remote": "",
+        "result": "add",
+      },
+      "paneLineCount": {
+        "local": 11,
+        "remote": 0,
+        "result": 0,
+      },
+      "resolved": false,
+      "resolvedSides": {
+        "local": false,
+        "remote": false,
+        "result": false,
+      },
+    },
+    {
+      "blockClass": "remoteAdd",
+      "blockId": "block-168-185",
+      "paneClass": {
+        "local": "",
+        "remote": "add",
+        "result": "add",
+      },
+      "paneLineCount": {
+        "local": 0,
+        "remote": 14,
+        "result": 0,
+      },
+      "resolved": false,
+      "resolvedSides": {
+        "local": false,
+        "remote": false,
+        "result": false,
+      },
+    },
+    {
+      "blockClass": "localDel",
+      "blockId": "block-188-209",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "del",
+      },
+      "paneLineCount": {
+        "local": 0,
+        "remote": 9,
+        "result": 9,
+      },
+      "resolved": false,
+      "resolvedSides": {
+        "local": false,
+        "remote": false,
+        "result": false,
+      },
+    },
+    {
+      "blockClass": "remoteDel",
+      "blockId": "block-212-225",
+      "paneClass": {
+        "local": "",
+        "remote": "",
+        "result": "del",
+      },
+      "paneLineCount": {
+        "local": 5,
+        "remote": 0,
+        "result": 5,
+      },
+      "resolved": false,
+      "resolvedSides": {
+        "local": false,
+        "remote": false,
+        "result": false,
+      },
+    },
+    {
+      "blockClass": "conflict",
+      "blockId": "block-232-236",
+      "paneClass": {
+        "local": "conflict",
+        "remote": "conflict",
+        "result": "result-unresolved",
+      },
+      "paneLineCount": {
+        "local": 1,
+        "remote": 1,
+        "result": 1,
+      },
+      "resolved": false,
+      "resolvedSides": {
+        "local": false,
+        "remote": false,
+        "result": false,
+      },
+    },
+    {
+      "blockClass": "localMod",
+      "blockId": "block-240-246",
+      "paneClass": {
+        "local": "mod",
+        "remote": "",
+        "result": "mod",
+      },
+      "paneLineCount": {
+        "local": 1,
+        "remote": 1,
+        "result": 1,
+      },
+      "resolved": false,
+      "resolvedSides": {
+        "local": false,
+        "remote": false,
+        "result": false,
+      },
+    },
+    {
+      "blockClass": "localAdd",
+      "blockId": "block-248-252",
+      "paneClass": {
+        "local": "add",
+        "remote": "",
+        "result": "add",
+      },
+      "paneLineCount": {
+        "local": 1,
+        "remote": 0,
+        "result": 0,
+      },
+      "resolved": false,
+      "resolvedSides": {
+        "local": false,
+        "remote": false,
+        "result": false,
+      },
+    },
+  ],
+  "panes": {
+    "local": 112,
+    "remote": 119,
+    "result": 105,
+  },
+}
+`;

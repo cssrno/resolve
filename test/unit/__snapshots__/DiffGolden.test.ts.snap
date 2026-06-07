@@ -1,0 +1,403 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Golden: Diff Sections pipeline > sections + pane texts under long-context-collapse-disabled > long-context-collapse-disabled 1`] = `
+{
+  "panes": {
+    "head": 25,
+    "working": 25,
+  },
+  "sections": [
+    {
+      "headLineCount": 12,
+      "hunkClass": null,
+      "hunkId": null,
+      "kind": "ctx",
+      "staged": false,
+      "visualRowCount": 12,
+      "workingLineCount": 12,
+    },
+    {
+      "headLineCount": 1,
+      "hunkClass": "mod",
+      "hunkId": "hunk-13-13",
+      "kind": "hunk",
+      "staged": false,
+      "visualRowCount": 1,
+      "workingLineCount": 1,
+    },
+    {
+      "headLineCount": 12,
+      "hunkClass": null,
+      "hunkId": null,
+      "kind": "ctx",
+      "staged": false,
+      "visualRowCount": 12,
+      "workingLineCount": 12,
+    },
+  ],
+}
+`;
+
+exports[`Golden: Diff Sections pipeline > sections + pane texts under long-context-collapse-enabled > long-context-collapse-enabled 1`] = `
+{
+  "panes": {
+    "head": 3,
+    "working": 3,
+  },
+  "sections": [
+    {
+      "collapsedKey": "1-12",
+      "collapsedPreview": "original line 1",
+      "headLineCount": 12,
+      "hunkClass": null,
+      "hunkId": null,
+      "kind": "ctx-collapsed",
+      "staged": false,
+      "visualRowCount": 1,
+      "workingLineCount": 12,
+    },
+    {
+      "headLineCount": 1,
+      "hunkClass": "mod",
+      "hunkId": "hunk-13-13",
+      "kind": "hunk",
+      "staged": false,
+      "visualRowCount": 1,
+      "workingLineCount": 1,
+    },
+    {
+      "collapsedKey": "14-25",
+      "collapsedPreview": "original line 14",
+      "headLineCount": 12,
+      "hunkClass": null,
+      "hunkId": null,
+      "kind": "ctx-collapsed",
+      "staged": false,
+      "visualRowCount": 1,
+      "workingLineCount": 12,
+    },
+  ],
+}
+`;
+
+exports[`Golden: Diff Sections pipeline > sections + pane texts under long-context-collapse-enabled-with-one-expanded > long-context-collapse-enabled-with-one-expanded 1`] = `
+{
+  "panes": {
+    "head": 14,
+    "working": 14,
+  },
+  "sections": [
+    {
+      "collapsedKey": "1-12",
+      "collapsedPreview": "original line 1",
+      "headLineCount": 12,
+      "hunkClass": null,
+      "hunkId": null,
+      "kind": "ctx-collapsed",
+      "staged": false,
+      "visualRowCount": 1,
+      "workingLineCount": 12,
+    },
+    {
+      "headLineCount": 1,
+      "hunkClass": "mod",
+      "hunkId": "hunk-13-13",
+      "kind": "hunk",
+      "staged": false,
+      "visualRowCount": 1,
+      "workingLineCount": 1,
+    },
+    {
+      "headLineCount": 12,
+      "hunkClass": null,
+      "hunkId": null,
+      "kind": "ctx",
+      "staged": false,
+      "visualRowCount": 12,
+      "workingLineCount": 12,
+    },
+  ],
+}
+`;
+
+exports[`Golden: Diff Sections pipeline > sections + pane texts under mixed-hunks > mixed-hunks 1`] = `
+{
+  "panes": {
+    "head": 10,
+    "working": 9,
+  },
+  "sections": [
+    {
+      "headLineCount": 1,
+      "hunkClass": null,
+      "hunkId": null,
+      "kind": "ctx",
+      "staged": false,
+      "visualRowCount": 1,
+      "workingLineCount": 1,
+    },
+    {
+      "headLineCount": 1,
+      "hunkClass": "mod",
+      "hunkId": "hunk-2-2",
+      "kind": "hunk",
+      "staged": false,
+      "visualRowCount": 1,
+      "workingLineCount": 1,
+    },
+    {
+      "headLineCount": 1,
+      "hunkClass": null,
+      "hunkId": null,
+      "kind": "ctx",
+      "staged": false,
+      "visualRowCount": 1,
+      "workingLineCount": 1,
+    },
+    {
+      "headLineCount": 0,
+      "hunkClass": "add",
+      "hunkId": "hunk-4-4",
+      "kind": "hunk",
+      "staged": false,
+      "visualRowCount": 1,
+      "workingLineCount": 1,
+    },
+    {
+      "headLineCount": 2,
+      "hunkClass": null,
+      "hunkId": null,
+      "kind": "ctx",
+      "staged": false,
+      "visualRowCount": 2,
+      "workingLineCount": 2,
+    },
+    {
+      "headLineCount": 2,
+      "hunkClass": "del",
+      "hunkId": "hunk-6-7",
+      "kind": "hunk",
+      "staged": false,
+      "visualRowCount": 2,
+      "workingLineCount": 0,
+    },
+    {
+      "headLineCount": 3,
+      "hunkClass": null,
+      "hunkId": null,
+      "kind": "ctx",
+      "staged": false,
+      "visualRowCount": 3,
+      "workingLineCount": 3,
+    },
+  ],
+}
+`;
+
+exports[`Golden: Diff Sections pipeline > sections + pane texts under mixed-hunks-some-staged > mixed-hunks-some-staged 1`] = `
+{
+  "panes": {
+    "head": 10,
+    "working": 9,
+  },
+  "sections": [
+    {
+      "headLineCount": 1,
+      "hunkClass": null,
+      "hunkId": null,
+      "kind": "ctx",
+      "staged": false,
+      "visualRowCount": 1,
+      "workingLineCount": 1,
+    },
+    {
+      "headLineCount": 1,
+      "hunkClass": "mod",
+      "hunkId": "hunk-2-2",
+      "kind": "hunk",
+      "staged": true,
+      "visualRowCount": 1,
+      "workingLineCount": 1,
+    },
+    {
+      "headLineCount": 1,
+      "hunkClass": null,
+      "hunkId": null,
+      "kind": "ctx",
+      "staged": false,
+      "visualRowCount": 1,
+      "workingLineCount": 1,
+    },
+    {
+      "headLineCount": 0,
+      "hunkClass": "add",
+      "hunkId": "hunk-4-4",
+      "kind": "hunk",
+      "staged": false,
+      "visualRowCount": 1,
+      "workingLineCount": 1,
+    },
+    {
+      "headLineCount": 2,
+      "hunkClass": null,
+      "hunkId": null,
+      "kind": "ctx",
+      "staged": false,
+      "visualRowCount": 2,
+      "workingLineCount": 2,
+    },
+    {
+      "headLineCount": 2,
+      "hunkClass": "del",
+      "hunkId": "hunk-6-7",
+      "kind": "hunk",
+      "staged": true,
+      "visualRowCount": 2,
+      "workingLineCount": 0,
+    },
+    {
+      "headLineCount": 3,
+      "hunkClass": null,
+      "hunkId": null,
+      "kind": "ctx",
+      "staged": false,
+      "visualRowCount": 3,
+      "workingLineCount": 3,
+    },
+  ],
+}
+`;
+
+exports[`Golden: Diff Sections pipeline > sections + pane texts under no-changes > no-changes 1`] = `
+{
+  "panes": {
+    "head": 10,
+    "working": 10,
+  },
+  "sections": [
+    {
+      "headLineCount": 10,
+      "hunkClass": null,
+      "hunkId": null,
+      "kind": "ctx",
+      "staged": false,
+      "visualRowCount": 10,
+      "workingLineCount": 10,
+    },
+  ],
+}
+`;
+
+exports[`Golden: Diff Sections pipeline > sections + pane texts under single-add-hunk > single-add-hunk 1`] = `
+{
+  "panes": {
+    "head": 10,
+    "working": 12,
+  },
+  "sections": [
+    {
+      "headLineCount": 3,
+      "hunkClass": null,
+      "hunkId": null,
+      "kind": "ctx",
+      "staged": false,
+      "visualRowCount": 3,
+      "workingLineCount": 3,
+    },
+    {
+      "headLineCount": 0,
+      "hunkClass": "add",
+      "hunkId": "hunk-4-4",
+      "kind": "hunk",
+      "staged": false,
+      "visualRowCount": 2,
+      "workingLineCount": 2,
+    },
+    {
+      "headLineCount": 7,
+      "hunkClass": null,
+      "hunkId": null,
+      "kind": "ctx",
+      "staged": false,
+      "visualRowCount": 7,
+      "workingLineCount": 7,
+    },
+  ],
+}
+`;
+
+exports[`Golden: Diff Sections pipeline > sections + pane texts under single-del-hunk > single-del-hunk 1`] = `
+{
+  "panes": {
+    "head": 10,
+    "working": 7,
+  },
+  "sections": [
+    {
+      "headLineCount": 2,
+      "hunkClass": null,
+      "hunkId": null,
+      "kind": "ctx",
+      "staged": false,
+      "visualRowCount": 2,
+      "workingLineCount": 2,
+    },
+    {
+      "headLineCount": 3,
+      "hunkClass": "del",
+      "hunkId": "hunk-3-3",
+      "kind": "hunk",
+      "staged": false,
+      "visualRowCount": 3,
+      "workingLineCount": 0,
+    },
+    {
+      "headLineCount": 5,
+      "hunkClass": null,
+      "hunkId": null,
+      "kind": "ctx",
+      "staged": false,
+      "visualRowCount": 5,
+      "workingLineCount": 5,
+    },
+  ],
+}
+`;
+
+exports[`Golden: Diff Sections pipeline > sections + pane texts under single-mod-hunk > single-mod-hunk 1`] = `
+{
+  "panes": {
+    "head": 10,
+    "working": 10,
+  },
+  "sections": [
+    {
+      "headLineCount": 2,
+      "hunkClass": null,
+      "hunkId": null,
+      "kind": "ctx",
+      "staged": false,
+      "visualRowCount": 2,
+      "workingLineCount": 2,
+    },
+    {
+      "headLineCount": 1,
+      "hunkClass": "mod",
+      "hunkId": "hunk-3-3",
+      "kind": "hunk",
+      "staged": false,
+      "visualRowCount": 1,
+      "workingLineCount": 1,
+    },
+    {
+      "headLineCount": 7,
+      "hunkClass": null,
+      "hunkId": null,
+      "kind": "ctx",
+      "staged": false,
+      "visualRowCount": 7,
+      "workingLineCount": 7,
+    },
+  ],
+}
+`;

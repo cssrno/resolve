@@ -1,0 +1,14 @@
+header line
+<<<<<<< HEAD
+local A
+=======
+remote A
+>>>>>>> branch
+middle line
+<<<<<<< HEAD
+local B1
+local B2
+=======
+remote B
+>>>>>>> branch
+footer line
