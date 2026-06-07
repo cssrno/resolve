@@ -11,12 +11,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nicolas/conflict-vscode"
+    "url": "https://github.com/cssrno/resolve"
   },
   "bugs": {
-    "url": "https://github.com/nicolas/conflict-vscode/issues"
+    "url": "https://github.com/cssrno/resolve/issues"
   },
-  "homepage": "https://github.com/nicolas/conflict-vscode#readme",
+  "homepage": "https://github.com/cssrno/resolve#readme",
   "keywords": [
     "merge",
     "diff",
