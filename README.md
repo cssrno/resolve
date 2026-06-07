@@ -7,7 +7,7 @@
 
 ## Demo
 
-<video src="media/demo.mp4" controls width="800"></video>
+<video src="https://github.com/cssrno/resolve/raw/main/media/demo.mp4" controls width="800"></video>
 
 > 90-second walkthrough of every feature — auto-opening merge view,
 > bezier ribbons, smart-merge buttons, collapse-unchanged with the
