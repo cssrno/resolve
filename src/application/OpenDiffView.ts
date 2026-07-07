@@ -225,7 +225,7 @@ export class OpenDiffView {
         return;
       case 'jumpToSource': {
         try {
-          await this.initCtx.runCommand('conflict.jumpToWorkingFile', [session.file.uri]);
+          await this.initCtx.runCommand('resolve.jumpToWorkingFile', [session.file.uri]);
         } catch (error) {
           this.editor.showError(`Failed to open source file: ${(error as Error).message}`);
         }

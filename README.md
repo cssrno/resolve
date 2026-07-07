@@ -33,6 +33,15 @@ back.
 
 ## Install
 
+From the VSCode Marketplace: open the Extensions view (`⇧⌘X` / `Ctrl+Shift+X`),
+search for **Resolve**, and click Install. Or from the command line:
+
+```bash
+code --install-extension cssrno.resolve
+```
+
+### Build from source
+
 ```bash
 git clone https://github.com/cssrno/resolve.git
 cd resolve
@@ -46,7 +55,7 @@ code --install-extension resolve-*.vsix
 
 | Setting | Default | What it does |
 |---|---|---|
-| `conflict.diffViewer.mode` | `side-by-side` | `side-by-side` uses Resolve's diff viewer for SCM clicks; `native` keeps VSCode's built-in. |
+| `resolve.diffViewer.mode` | `side-by-side` | `side-by-side` uses Resolve's diff viewer for SCM clicks; `native` keeps VSCode's built-in. |
 
 ## License
 

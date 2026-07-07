@@ -10,7 +10,7 @@
  * or bezier coords, these snapshots catch it.
  */
 import { describe, it, expect, beforeAll, beforeEach } from 'vitest';
-import { buildDiffSections, type DiffSection } from '../../src/webview/ui/DiffSections';
+import { buildDiffSections } from '../../src/webview/ui/DiffSections';
 import { DiffGutterPainter } from '../../src/webview/ui/DiffGutterPainter';
 import { DiffBezierOverlay } from '../../src/webview/ui/DiffBezierOverlay';
 import { DiffActionButtons } from '../../src/webview/ui/DiffActionButtons';

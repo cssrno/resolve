@@ -18,6 +18,8 @@ out/**/*.map
 .editorconfig
 **/*.test.ts
 CLAUDE.md
+.claude/**
+.vscode-test.mjs
 .idea/**
 .git/**
 **/*.vsix

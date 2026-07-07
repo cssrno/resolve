@@ -1,6 +1,7 @@
 import type { MonacoModule } from '../monaco/loader';
 import type { HostBridge } from '../ipc/HostBridge';
 import type { InitPayload } from '../main';
+import type { MergeCommandAction } from '../../shared/protocol';
 import { applyTheme } from '../monaco/ThemeApplier';
 import { applyKeybindings } from '../monaco/KeybindingsApplier';
 import { ActiveLinePerPane, bootMonacoLanguage, registerUndoRedoCommands } from './AppBoot';
@@ -123,8 +124,38 @@ export async function mountMergeApp(
       applyTheme(monaco, msg.theme);
     } else if (msg.kind === 'saved') {
       setStatus('Saved.');
+    } else if (msg.kind === 'command') {
+      handleHostCommand(msg.action);
     }
   });
+
+  // A palette command / keybinding relayed by the host. `save` maps
+  // straight to the toolbar save; the accept actions target the conflict
+  // the user currently has selected (falling back to the first conflict
+  // when nothing is focused yet), then flow through the exact same
+  // messages the on-screen chevrons already send.
+  function handleHostCommand(action: MergeCommandAction): void {
+    if (action === 'save') {
+      bridge.send({ kind: 'save' });
+      return;
+    }
+    const blockId = targetConflictBlockId();
+    if (!blockId) {
+      setStatus('No conflict to resolve.');
+      return;
+    }
+    const side = action === 'acceptLeft' ? 'left' : action === 'acceptRight' ? 'right' : 'both';
+    bridge.send({ kind: 'accept', blockId, side });
+  }
+
+  function targetConflictBlockId(): string | null {
+    const focused = sections[currentSectionIndex];
+    if (focused && focused.kind === 'conflict' && focused.blockId) return focused.blockId;
+    const firstConflict = sections.find(
+      (section) => section.kind === 'conflict' && section.blockId,
+    );
+    return firstConflict?.blockId ?? null;
+  }
 
   wireToolbar(bridge, currentFile);
   let currentSectionIndex = -1;

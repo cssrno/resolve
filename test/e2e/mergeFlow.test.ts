@@ -10,6 +10,6 @@ suite('Merge flow e2e', () => {
     assert.ok(doc.getText().includes('<<<<<<<'));
 
     const commands = await vscode.commands.getCommands(true);
-    assert.ok(commands.includes('conflict.openMergeView'));
+    assert.ok(commands.includes('resolve.openMergeView'));
   });
 });

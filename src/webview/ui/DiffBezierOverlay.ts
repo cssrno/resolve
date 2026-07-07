@@ -39,9 +39,9 @@ export class DiffBezierOverlay {
       const headCount = section.headLineCount;
       const workingCount = section.workingLineCount;
       let headYStart = this.lineTop('head', headLine, gutterRect.top);
-      let headYEnd = this.lineTop('head', headLine + headCount, gutterRect.top);
+      const headYEnd = this.lineTop('head', headLine + headCount, gutterRect.top);
       let workingYStart = this.lineTop('working', workingLine, gutterRect.top);
-      let workingYEnd = this.lineTop('working', workingLine + workingCount, gutterRect.top);
+      const workingYEnd = this.lineTop('working', workingLine + workingCount, gutterRect.top);
       if (headCount === 0) headYStart = headYEnd - INTER_LINE_THICKNESS_PX;
       if (workingCount === 0) workingYStart = workingYEnd - INTER_LINE_THICKNESS_PX;
       appendTrapezoid(

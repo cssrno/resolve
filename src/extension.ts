@@ -92,14 +92,14 @@ export function activate(context: vscode.ExtensionContext): void {
 function registerDiffViewerModeCommands(context: vscode.ExtensionContext): void {
   context.subscriptions.push(
     vscode.commands.registerCommand(
-      'conflict.setDiffViewerMode',
+      'resolve.setDiffViewerMode',
       async (mode: 'side-by-side' | 'native') => {
         await vscode.workspace
-          .getConfiguration('conflict.diffViewer')
+          .getConfiguration('resolve.diffViewer')
           .update('mode', mode, vscode.ConfigurationTarget.Global);
       },
     ),
-    vscode.commands.registerCommand('conflict.openNativeDiff', async (workingUriString: string) => {
+    vscode.commands.registerCommand('resolve.openNativeDiff', async (workingUriString: string) => {
       const workingUri = vscode.Uri.parse(workingUriString);
       // Built-in git extension exposes its head content via the `git:` URI
       // scheme with a query string. Mirrors what the SCM panel does
@@ -113,7 +113,7 @@ function registerDiffViewerModeCommands(context: vscode.ExtensionContext): void 
         `${filename} (Working tree ↔ HEAD)`,
       );
     }),
-    vscode.commands.registerCommand('conflict.jumpToWorkingFile', async (workingUriString: string) => {
+    vscode.commands.registerCommand('resolve.jumpToWorkingFile', async (workingUriString: string) => {
       const workingUri = vscode.Uri.parse(workingUriString);
       const document = await vscode.workspace.openTextDocument(workingUri);
       await vscode.window.showTextDocument(document, { preview: false });
@@ -136,7 +136,7 @@ function wireGitDiffInterception(
       // Honor the user's viewer preference — when set to 'native', let
       // VSCode's built-in diff editor render its own tab unmodified.
       const viewerMode = vscode.workspace
-        .getConfiguration('conflict.diffViewer')
+        .getConfiguration('resolve.diffViewer')
         .get<'side-by-side' | 'native'>('mode', 'side-by-side');
       if (viewerMode === 'native') return;
       for (const tab of event.opened) {

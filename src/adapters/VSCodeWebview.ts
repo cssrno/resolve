@@ -29,6 +29,12 @@ export class VSCodeWebview implements WebviewPort {
       },
       resolveAssetUri: (relPath: string[]) =>
         panel.webview.asWebviewUri(vscode.Uri.joinPath(this.extensionUri, 'out', 'webview', ...relPath)).toString(),
+      onDidChangeActive: (handler: (active: boolean) => void) => {
+        panel.onDidChangeViewState((event) => handler(event.webviewPanel.active));
+      },
+      onDidDispose: (handler: () => void) => {
+        panel.onDidDispose(handler);
+      },
       dispose: () => panel.dispose(),
     };
   }

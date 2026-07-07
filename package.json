@@ -2,7 +2,7 @@
   "name": "resolve",
   "displayName": "Resolve",
   "description": "IntelliJ-style 3-way merge editor and 2-pane diff viewer with bezier pipes. Auto-collapses unchanged regions, breadcrumb hovers, scoped chevron actions, rebase / merge context headers.",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "publisher": "cssrno",
   "engines": {
     "vscode": "^1.85.0"
@@ -28,9 +28,12 @@
     "rebase"
   ],
   "categories": [
-    "SCM Providers",
-    "Other"
+    "SCM Providers"
   ],
+  "galleryBanner": {
+    "color": "#1e1e2e",
+    "theme": "dark"
+  },
   "main": "./out/extension.js",
   "activationEvents": [
     "onStartupFinished"
@@ -38,47 +41,47 @@
   "contributes": {
     "commands": [
       {
-        "command": "conflict.openMergeView",
-        "title": "Conflict: Open Merge View",
-        "category": "Conflict"
+        "command": "resolve.openMergeView",
+        "title": "Resolve: Open Merge View",
+        "category": "Resolve"
       },
       {
-        "command": "conflict.acceptLeft",
-        "title": "Conflict: Accept Left",
-        "category": "Conflict"
+        "command": "resolve.acceptLeft",
+        "title": "Resolve: Accept Left",
+        "category": "Resolve"
       },
       {
-        "command": "conflict.acceptRight",
-        "title": "Conflict: Accept Right",
-        "category": "Conflict"
+        "command": "resolve.acceptRight",
+        "title": "Resolve: Accept Right",
+        "category": "Resolve"
       },
       {
-        "command": "conflict.acceptBoth",
-        "title": "Conflict: Accept Both",
-        "category": "Conflict"
+        "command": "resolve.acceptBoth",
+        "title": "Resolve: Accept Both",
+        "category": "Resolve"
       },
       {
-        "command": "conflict.save",
-        "title": "Conflict: Save Resolved File",
-        "category": "Conflict"
+        "command": "resolve.save",
+        "title": "Resolve: Save Resolved File",
+        "category": "Resolve"
       },
       {
-        "command": "conflict.openDiff",
-        "title": "Conflict: Open Diff View",
-        "category": "Conflict"
+        "command": "resolve.openDiff",
+        "title": "Resolve: Open Diff View",
+        "category": "Resolve"
       }
     ],
     "menus": {
       "editor/title": [
         {
-          "command": "conflict.openMergeView",
+          "command": "resolve.openMergeView",
           "when": "resourceScheme == file",
           "group": "navigation"
         }
       ],
       "scm/resourceState/context": [
         {
-          "command": "conflict.openDiff",
+          "command": "resolve.openDiff",
           "group": "navigation"
         }
       ]
@@ -89,9 +92,9 @@
       "merge-conflict.autoNavigateNextConflict.enabled": false
     },
     "configuration": {
-      "title": "Conflict",
+      "title": "Resolve",
       "properties": {
-        "conflict.diffViewer.mode": {
+        "resolve.diffViewer.mode": {
           "type": "string",
           "enum": [
             "side-by-side",

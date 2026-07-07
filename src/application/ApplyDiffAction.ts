@@ -124,16 +124,6 @@ function buildSingleHunkPatchFromUnified(repoRelativePath: string, hunk: Unified
   return [...headerLines, hunkHeader, ...bodyLines, ''].join('\n');
 }
 
-function findUnifiedHunkMatchingRight(
-  hunks: readonly UnifiedHunk[],
-  rightLines: readonly string[],
-): UnifiedHunk | null {
-  for (const hunk of hunks) {
-    if (arraysEqual(hunk.rightLines, rightLines)) return hunk;
-  }
-  return null;
-}
-
 /**
  * Locates the hunk in a freshly-fetched diff that corresponds to the one
  * the user clicked. Two-stage matching:

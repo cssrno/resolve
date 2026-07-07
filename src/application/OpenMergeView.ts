@@ -11,6 +11,7 @@ import type {
   EditorFontConfig,
   GrammarConfig,
   KeybindingDTO,
+  MergeCommandAction,
   MergeContextDTO,
   ThemeConfig,
   WebviewToHost,
@@ -35,6 +36,11 @@ export interface InitContextProvider {
 }
 
 export class OpenMergeView {
+  /** The merge webview the user is currently focused on, or null when no
+   *  merge view has focus. Palette commands (`resolve.acceptLeft`, …) are
+   *  dispatched here so they act on the conflict the user is looking at. */
+  private activeHandle: WebviewHandle | null = null;
+
   constructor(
     private readonly detect: DetectConflicts,
     private readonly apply: ApplyResolution,
@@ -45,6 +51,19 @@ export class OpenMergeView {
     private readonly resolveLanguageId: (uri: string) => Promise<string>,
   ) {}
 
+  /**
+   * Routes a palette command / keybinding to the focused merge view. The
+   * webview resolves the action against the conflict block it currently
+   * has selected — the host deliberately holds no cursor state.
+   */
+  dispatch(action: MergeCommandAction): void {
+    if (!this.activeHandle) {
+      this.editor.showInfo('No merge view is focused.');
+      return;
+    }
+    this.activeHandle.postMessage({ kind: 'command', action });
+  }
+
   async run(uri: string): Promise<void> {
     const file = await this.detect.run(uri);
     if (file.blocks.length === 0) {
@@ -54,6 +73,16 @@ export class OpenMergeView {
 
     const session = MergeSession.from(file);
     const handle = this.webview.open(`Merge: ${shortName(uri)}`);
+    // A freshly-opened panel is created in the active column and takes
+    // focus, so it becomes the dispatch target immediately.
+    this.activeHandle = handle;
+    handle.onDidChangeActive((active) => {
+      if (active) this.activeHandle = handle;
+      else if (this.activeHandle === handle) this.activeHandle = null;
+    });
+    handle.onDidDispose(() => {
+      if (this.activeHandle === handle) this.activeHandle = null;
+    });
 
     // Attach the message handler IMMEDIATELY — the webview may fire
     // `ready` before the async init payload is built (= before

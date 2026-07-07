@@ -1,8 +1,49 @@
 # Changelog
 
-All notable changes to the Conflict extension are tracked here. The format
+All notable changes to the Resolve extension are tracked here. The format
 is loosely based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 and the project follows [Semantic Versioning](https://semver.org/).
+
+## [0.1.4] — 2026-07-07
+
+### Added
+
+- **Palette / keybinding merge commands now act on the selected conflict.**
+  `Resolve: Accept Left`, `Accept Right`, `Accept Both` and `Save Resolved
+  File` were previously declared but unhandled; they now dispatch to the
+  focused merge view and resolve the conflict block the cursor is in
+  (falling back to the first conflict when none is selected).
+
+### Changed
+
+- **Command & setting namespace renamed** `conflict.*` → `resolve.*` so the
+  command palette, context menus and settings match the extension's name.
+  Commands are now `Resolve: Open Merge View`, `Resolve: Open Diff View`,
+  etc.; the diff-viewer preference is `resolve.diffViewer.mode` (previously
+  `conflict.diffViewer.mode`).
+- Marketplace category narrowed to **SCM Providers** and a dark gallery
+  banner added.
+
+### Fixed
+
+- Excluded local tooling files (`.claude/`, `.vscode-test.mjs`) from the
+  published VSIX.
+- Resolved `prefer-const` lint errors in the bezier overlays.
+
+## [0.1.3] — 2026-06-07
+
+### Changed
+
+- Renamed the extension to **Resolve**, set the `cssrno` publisher, added
+  the marketplace icon, screenshots and gallery metadata.
+- Rewrote the README around the three headline surfaces (merge view, diff
+  view, collapsed ranges).
+
+## [0.1.1] — 2026-06-07
+
+### Changed
+
+- Pointed `repository`, `bugs` and `homepage` at the public GitHub repo.
 
 ## [0.1.0] — 2026-06-07
 

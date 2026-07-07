@@ -125,6 +125,14 @@ export interface DocumentSymbolDTO {
   readonly depth: number;
 }
 
+/**
+ * A merge action dispatched from a VSCode palette command (or keybinding)
+ * into the focused merge webview. The webview resolves it against the
+ * conflict block the user currently has selected and replays it through
+ * the same `accept` / `save` messages the toolbar buttons already use.
+ */
+export type MergeCommandAction = 'acceptLeft' | 'acceptRight' | 'acceptBoth' | 'save';
+
 export type HostToWebview =
   | {
       kind: 'init';
@@ -151,6 +159,7 @@ export type HostToWebview =
   | { kind: 'diffRefreshed'; file: DiffFileDTO }
   | { kind: 'saved' }
   | { kind: 'themeChanged'; theme: ThemeConfig }
+  | { kind: 'command'; action: MergeCommandAction }
   | { kind: 'commandResult'; requestId: string; ok: boolean; error?: string };
 
 export type WebviewToHost =

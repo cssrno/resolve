@@ -10,7 +10,7 @@ export function registerCommands(
   editor: EditorPort,
 ): void {
   context.subscriptions.push(
-    vscode.commands.registerCommand('conflict.openMergeView', async () => {
+    vscode.commands.registerCommand('resolve.openMergeView', async () => {
       const uri = editor.activeFileUri();
       if (!uri) {
         editor.showError('No active editor.');
@@ -18,7 +18,7 @@ export function registerCommands(
       }
       await openMergeView.run(uri);
     }),
-    vscode.commands.registerCommand('conflict.openDiff', async (resource?: vscode.Uri) => {
+    vscode.commands.registerCommand('resolve.openDiff', async (resource?: vscode.Uri) => {
       const uri = resource?.toString() ?? editor.activeFileUri();
       if (!uri) {
         editor.showError('No file to diff.');
@@ -26,5 +26,12 @@ export function registerCommands(
       }
       await openDiffView.run(uri);
     }),
+    // Palette / keybinding entry points that act on the conflict currently
+    // selected in the focused merge view. The view itself owns the cursor
+    // state, so these just forward the intent.
+    vscode.commands.registerCommand('resolve.acceptLeft', () => openMergeView.dispatch('acceptLeft')),
+    vscode.commands.registerCommand('resolve.acceptRight', () => openMergeView.dispatch('acceptRight')),
+    vscode.commands.registerCommand('resolve.acceptBoth', () => openMergeView.dispatch('acceptBoth')),
+    vscode.commands.registerCommand('resolve.save', () => openMergeView.dispatch('save')),
   );
 }
