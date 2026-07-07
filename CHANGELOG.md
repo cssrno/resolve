@@ -4,6 +4,17 @@ All notable changes to the Resolve extension are tracked here. The format
 is loosely based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 and the project follows [Semantic Versioning](https://semver.org/).
 
+## [0.1.5] — 2026-07-07
+
+### Changed
+
+- **README & marketplace wording clarified.** The tagline is now
+  "IntelliJ-style merge & diff tools for VSCode — an independent
+  reimplementation of IntelliJ's merge & diff experience" (previously "The
+  IntelliJ merge & diff tools, ported to VSCode"), and a trademark notice
+  was added: this is an independent project, not affiliated with or endorsed
+  by JetBrains s.r.o.; "IntelliJ" is used descriptively only.
+
 ## [0.1.4] — 2026-07-07
 
 ### Added

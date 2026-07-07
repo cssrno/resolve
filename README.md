@@ -1,6 +1,7 @@
 # Resolve
 
-The IntelliJ merge & diff tools, ported to VSCode.
+IntelliJ-style merge & diff tools for VSCode — an independent
+reimplementation of IntelliJ's merge & diff experience.
 
 Resolve is a side project. Bugs and missing pieces are likely — open an
 issue if you spot something.
@@ -60,3 +61,9 @@ code --install-extension resolve-*.vsix
 ## License
 
 MIT — see [LICENSE](LICENSE).
+
+## Trademark notice
+
+Independent project, not affiliated with or endorsed by JetBrains s.r.o.
+"IntelliJ" is a trademark of JetBrains s.r.o., used here for descriptive
+purposes only.

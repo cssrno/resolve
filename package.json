@@ -2,7 +2,7 @@
   "name": "resolve",
   "displayName": "Resolve",
   "description": "IntelliJ-style 3-way merge editor and 2-pane diff viewer with bezier pipes. Auto-collapses unchanged regions, breadcrumb hovers, scoped chevron actions, rebase / merge context headers.",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "publisher": "cssrno",
   "engines": {
     "vscode": "^1.85.0"
