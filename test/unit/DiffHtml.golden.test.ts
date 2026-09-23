@@ -42,7 +42,7 @@ const SCENARIOS: Scenario[] = [
     file: buildFile(
       ['line 1', 'line 2', 'line 3', 'line 4', 'line 5'],
       ['line 1', 'line 2', 'line 3', 'NEW LINE', 'line 4', 'line 5'],
-      [hunk(4, 4, [], ['NEW LINE'])],
+      [hunk(3, 4, [], ['NEW LINE'])],
     ),
     stagedHunkIds: new Set(),
   },
@@ -62,10 +62,10 @@ const SCENARIOS: Scenario[] = [
       ['line 1', 'LINE 2 MOD', 'line 3', 'INSERTED', 'line 4', 'line 5', 'line 6'],
       [
         hunk(2, 2, ['line 2'], ['LINE 2 MOD']),
-        hunk(4, 4, [], ['INSERTED']),
+        hunk(3, 4, [], ['INSERTED']),
       ],
     ),
-    stagedHunkIds: new Set([makeHunkId(4, 4)]),
+    stagedHunkIds: new Set([makeHunkId(3, 4)]),
   },
 ];
 

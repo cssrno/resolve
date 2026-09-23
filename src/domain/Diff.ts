@@ -9,7 +9,10 @@
 export interface DiffHunk {
   /** Stable identifier built from line positions, used by the UI for keying. */
   readonly id: string;
-  /** 1-based start line on the HEAD ("left") side. */
+  /**
+   * 1-based start line on the HEAD ("left") side, as in git's -U0 header.
+   * For pure insertions this is the line the insertion follows (0 = top).
+   */
   readonly leftStartLine: number;
   /** 1-based start line on the working ("right") side. */
   readonly rightStartLine: number;

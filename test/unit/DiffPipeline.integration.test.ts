@@ -8,7 +8,9 @@ import { GitCli } from '../../src/adapters/GitCli';
 import { UnifiedDiffParser } from '../../src/domain/parser/UnifiedDiffParser';
 import { DetectDiff } from '../../src/application/DetectDiff';
 import { ApplyDiffAction } from '../../src/application/ApplyDiffAction';
+import { toDiffFileDTO } from '../../src/application/DiffMapper';
 import { DiffSession } from '../../src/domain/DiffSession';
+import { buildDiffSections, workingLineOfSection } from '../../src/webview/ui/DiffSections';
 import type { FileSystemPort } from '../../src/domain/ports/FileSystemPort';
 
 const exec = promisify(execFile);
@@ -85,6 +87,17 @@ describe('Diff pipeline (DetectDiff + DiffSession + ApplyDiffAction)', () => {
     expect(diff!.hunks[0]!.rightLines).toEqual(['BETA']);
     expect(diff!.hunks[1]!.leftLines).toEqual(['delta']);
     expect(diff!.hunks[1]!.rightLines).toEqual(['DELTA']);
+  });
+
+  it('pure insertion section starts at the inserted lines, not the line above', async () => {
+    await fs.writeFile(filePath, INITIAL.replace('beta\n', 'beta\nNEW 1\nNEW 2\n'), 'utf-8');
+
+    const diff = await detect.run(uri);
+    const sections = buildDiffSections(toDiffFileDTO(diff!, [], 'plaintext'), new Set());
+    const hunkIndex = sections.findIndex((section) => section.kind === 'hunk');
+    expect(sections[hunkIndex]).toMatchObject({ hunkClass: 'add', workingLineCount: 2 });
+    expect(workingLineOfSection(sections, hunkIndex)).toBe(3);
+    expect(sections[sections.length - 1]).toMatchObject({ kind: 'ctx', headLineCount: 3 });
   });
 
   it('ApplyDiffAction.stageHunk + unstageHunk round-trip via git index', async () => {

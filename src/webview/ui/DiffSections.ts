@@ -79,13 +79,14 @@ export function buildDiffSections(
 ): DiffSection[] {
   const sections: DiffSection[] = [];
   const sortedHunks = [...file.hunks].sort((leftHunk, rightHunk) =>
-    leftHunk.leftStartLine - rightHunk.leftStartLine,
+    headStartLine(leftHunk) - headStartLine(rightHunk),
   );
   let headCursor = 1;
   let workingCursor = 1;
   for (const hunk of sortedHunks) {
-    if (hunk.leftStartLine > headCursor) {
-      const contextLineCount = hunk.leftStartLine - headCursor;
+    const hunkHeadStart = headStartLine(hunk);
+    if (hunkHeadStart > headCursor) {
+      const contextLineCount = hunkHeadStart - headCursor;
       sections.push(
         buildContextSection(
           contextLineCount,
@@ -113,6 +114,15 @@ export function buildDiffSections(
     );
   }
   return sections;
+}
+
+/**
+ * First HEAD line at or after the hunk. git's -U0 header gives a pure
+ * insertion's left start as the line it follows (`@@ -3,0 +4,2 @@`
+ * inserts after line 3), not the line where it begins.
+ */
+function headStartLine(hunk: DiffHunkDTO): number {
+  return hunk.leftLines.length === 0 ? hunk.leftStartLine + 1 : hunk.leftStartLine;
 }
 
 function buildContextSection(
