@@ -16,7 +16,7 @@ exports[`Golden HTML: diff view rendering pipeline > full #app innerHTML — mix
 </div>
 <div class="ln-row marker-bottom-add" style="height: 18px; line-height: 18px;">
 </div>
-<div class="ln-row" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-4-4">
+<div class="ln-row" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-3-4">
 </div>
 <div class="ln-row" style="height: 18px; line-height: 18px;">
 </div>
@@ -42,7 +42,7 @@ exports[`Golden HTML: diff view rendering pipeline > full #app innerHTML — mix
 </div>
 <div class="ln-row marker-bottom-add" style="height: 18px; line-height: 18px;">
 </div>
-<div class="ln-row" style="height: 18px; line-height: 18px; position: relative; overflow: visible;" data-hunk-id="hunk-4-4">
+<div class="ln-row" style="height: 18px; line-height: 18px; position: relative; overflow: visible;" data-hunk-id="hunk-3-4">
 <div class="diff-zone-actions" style="top: 50%; transform: translate(-50%, -50%);">
 <button class="icon-btn" title="Revert this change">
 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
@@ -65,7 +65,7 @@ exports[`Golden HTML: diff view rendering pipeline > full #app innerHTML — mix
 <div class="ln-row" style="height: 18px; line-height: 18px;">1</div>
 <div class="ln-row mod hunk-edge-top hunk-edge-bottom is-unstaged" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-2-2">2</div>
 <div class="ln-row marker-bottom-add" style="height: 18px; line-height: 18px;">3</div>
-<div class="ln-row" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-4-4">4</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-3-4">4</div>
 <div class="ln-row" style="height: 18px; line-height: 18px;">5</div>
 <div class="ln-row" style="height: 18px; line-height: 18px;">6</div>
 </div>
@@ -91,7 +91,7 @@ exports[`Golden HTML: diff view rendering pipeline > full #app innerHTML — mix
 <div class="ln-row" style="height: 18px; line-height: 18px;">1</div>
 <div class="ln-row mod hunk-edge-top hunk-edge-bottom is-unstaged" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-2-2">2</div>
 <div class="ln-row" style="height: 18px; line-height: 18px;">3</div>
-<div class="ln-row add hunk-edge-top hunk-edge-bottom" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-4-4">4</div>
+<div class="ln-row add hunk-edge-top hunk-edge-bottom" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-3-4">4</div>
 <div class="ln-row" style="height: 18px; line-height: 18px;">5</div>
 <div class="ln-row" style="height: 18px; line-height: 18px;">6</div>
 <div class="ln-row" style="height: 18px; line-height: 18px;">7</div>
@@ -110,7 +110,7 @@ exports[`Golden HTML: diff view rendering pipeline > full #app innerHTML — mix
 </div>
 <div class="ln-row" style="height: 18px; line-height: 18px;">
 </div>
-<div class="ln-row add hunk-edge-top hunk-edge-bottom" style="height: 18px; line-height: 18px; position: relative; overflow: visible;" data-hunk-id="hunk-4-4">
+<div class="ln-row add hunk-edge-top hunk-edge-bottom" style="height: 18px; line-height: 18px; position: relative; overflow: visible;" data-hunk-id="hunk-3-4">
 <div class="diff-zone-actions" style="top: 50%; transform: translate(-50%, -50%);">
 <label class="stage-checkbox" title="Unstage this change">
 <input type="checkbox">
@@ -133,7 +133,7 @@ exports[`Golden HTML: diff view rendering pipeline > full #app innerHTML — mix
 </div>
 <div class="ln-row" style="height: 18px; line-height: 18px;">
 </div>
-<div class="ln-row add hunk-edge-top hunk-edge-bottom" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-4-4">
+<div class="ln-row add hunk-edge-top hunk-edge-bottom" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-3-4">
 </div>
 <div class="ln-row" style="height: 18px; line-height: 18px;">
 </div>
@@ -166,7 +166,7 @@ exports[`Golden HTML: diff view rendering pipeline > full #app innerHTML — sin
 </div>
 <div class="ln-row marker-bottom-add" style="height: 18px; line-height: 18px;">
 </div>
-<div class="ln-row" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-4-4">
+<div class="ln-row" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-3-4">
 </div>
 <div class="ln-row" style="height: 18px; line-height: 18px;">
 </div>
@@ -180,7 +180,7 @@ exports[`Golden HTML: diff view rendering pipeline > full #app innerHTML — sin
 </div>
 <div class="ln-row marker-bottom-add" style="height: 18px; line-height: 18px;">
 </div>
-<div class="ln-row" style="height: 18px; line-height: 18px; position: relative; overflow: visible;" data-hunk-id="hunk-4-4">
+<div class="ln-row" style="height: 18px; line-height: 18px; position: relative; overflow: visible;" data-hunk-id="hunk-3-4">
 <div class="diff-zone-actions" style="top: 50%; transform: translate(-50%, -50%);">
 <button class="icon-btn" title="Revert this change">
 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
@@ -201,7 +201,7 @@ exports[`Golden HTML: diff view rendering pipeline > full #app innerHTML — sin
 <div class="ln-row" style="height: 18px; line-height: 18px;">1</div>
 <div class="ln-row" style="height: 18px; line-height: 18px;">2</div>
 <div class="ln-row marker-bottom-add" style="height: 18px; line-height: 18px;">3</div>
-<div class="ln-row" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-4-4">4</div>
+<div class="ln-row" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-3-4">4</div>
 <div class="ln-row" style="height: 18px; line-height: 18px;">5</div>
 </div>
 </div>
@@ -220,7 +220,7 @@ exports[`Golden HTML: diff view rendering pipeline > full #app innerHTML — sin
 <div class="ln-row" style="height: 18px; line-height: 18px;">1</div>
 <div class="ln-row" style="height: 18px; line-height: 18px;">2</div>
 <div class="ln-row" style="height: 18px; line-height: 18px;">3</div>
-<div class="ln-row add hunk-edge-top hunk-edge-bottom is-unstaged" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-4-4">4</div>
+<div class="ln-row add hunk-edge-top hunk-edge-bottom is-unstaged" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-3-4">4</div>
 <div class="ln-row" style="height: 18px; line-height: 18px;">5</div>
 <div class="ln-row" style="height: 18px; line-height: 18px;">6</div>
 </div>
@@ -233,7 +233,7 @@ exports[`Golden HTML: diff view rendering pipeline > full #app innerHTML — sin
 </div>
 <div class="ln-row" style="height: 18px; line-height: 18px;">
 </div>
-<div class="ln-row add hunk-edge-top hunk-edge-bottom is-unstaged" style="height: 18px; line-height: 18px; position: relative; overflow: visible;" data-hunk-id="hunk-4-4">
+<div class="ln-row add hunk-edge-top hunk-edge-bottom is-unstaged" style="height: 18px; line-height: 18px; position: relative; overflow: visible;" data-hunk-id="hunk-3-4">
 <div class="diff-zone-actions" style="top: 50%; transform: translate(-50%, -50%);">
 <label class="stage-checkbox" title="Stage this change">
 <input type="checkbox">
@@ -254,7 +254,7 @@ exports[`Golden HTML: diff view rendering pipeline > full #app innerHTML — sin
 </div>
 <div class="ln-row" style="height: 18px; line-height: 18px;">
 </div>
-<div class="ln-row add hunk-edge-top hunk-edge-bottom is-unstaged" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-4-4">
+<div class="ln-row add hunk-edge-top hunk-edge-bottom is-unstaged" style="height: 18px; line-height: 18px;" data-hunk-id="hunk-3-4">
 </div>
 <div class="ln-row" style="height: 18px; line-height: 18px;">
 </div>

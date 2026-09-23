@@ -157,7 +157,7 @@ exports[`Golden: Diff Sections pipeline > sections + pane texts under mixed-hunk
     {
       "headLineCount": 0,
       "hunkClass": "add",
-      "hunkId": "hunk-4-4",
+      "hunkId": "hunk-3-4",
       "kind": "hunk",
       "staged": false,
       "visualRowCount": 1,
@@ -231,7 +231,7 @@ exports[`Golden: Diff Sections pipeline > sections + pane texts under mixed-hunk
     {
       "headLineCount": 0,
       "hunkClass": "add",
-      "hunkId": "hunk-4-4",
+      "hunkId": "hunk-3-4",
       "kind": "hunk",
       "staged": false,
       "visualRowCount": 1,
@@ -307,7 +307,7 @@ exports[`Golden: Diff Sections pipeline > sections + pane texts under single-add
     {
       "headLineCount": 0,
       "hunkClass": "add",
-      "hunkId": "hunk-4-4",
+      "hunkId": "hunk-3-4",
       "kind": "hunk",
       "staged": false,
       "visualRowCount": 2,
