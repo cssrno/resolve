@@ -1,5 +1,6 @@
 import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import type { GitCli } from '../adapters/GitCli';
 import type { FileSystemPort } from '../domain/ports/FileSystemPort';
 import type { DiffFile, DiffHunk } from '../domain/Diff';
@@ -123,11 +124,7 @@ async function safeRealpath(p: string): Promise<string> {
 }
 
 function uriToFsPath(uri: string): string {
-  if (uri.startsWith('file://')) {
-    const withoutScheme = uri.slice('file://'.length);
-    return decodeURIComponent(withoutScheme);
-  }
-  return uri;
+  return uri.startsWith('file://') ? fileURLToPath(uri) : uri;
 }
 
 function toForwardSlashes(p: string): string {
