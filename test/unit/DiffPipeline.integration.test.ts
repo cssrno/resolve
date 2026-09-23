@@ -4,6 +4,7 @@ import { promisify } from 'node:util';
 import * as fs from 'node:fs/promises';
 import * as os from 'node:os';
 import * as path from 'node:path';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { GitCli } from '../../src/adapters/GitCli';
 import { UnifiedDiffParser } from '../../src/domain/parser/UnifiedDiffParser';
 import { DetectDiff } from '../../src/application/DetectDiff';
@@ -25,11 +26,16 @@ class NodeFs implements FileSystemPort {
 }
 
 function uriToFsPath(uri: string): string {
-  return decodeURIComponent(uri.replace(/^file:\/\//, ''));
+  return fileURLToPath(uri);
 }
 
 function fsPathToUri(fsPath: string): string {
-  return `file://${encodeURI(fsPath).replace(/%2F/g, '/')}`;
+  return pathToFileURL(fsPath).href;
+}
+
+/** VSCode's Uri.toString() on Windows: lowercase drive letter, colon encoded as %3A. */
+function toVSCodeWindowsUri(uri: string): string {
+  return uri.replace(/^file:\/\/\/([A-Za-z]):/, (_, drive: string) => `file:///${drive.toLowerCase()}%3A`);
 }
 
 describe('Diff pipeline (DetectDiff + DiffSession + ApplyDiffAction)', () => {
@@ -85,6 +91,15 @@ describe('Diff pipeline (DetectDiff + DiffSession + ApplyDiffAction)', () => {
     expect(diff!.hunks[0]!.rightLines).toEqual(['BETA']);
     expect(diff!.hunks[1]!.leftLines).toEqual(['delta']);
     expect(diff!.hunks[1]!.rightLines).toEqual(['DELTA']);
+  });
+
+  it.runIf(process.platform === 'win32')('DetectDiff resolves VSCode-style Windows URIs', async () => {
+    await fs.writeFile(filePath, INITIAL.replace('beta', 'BETA'), 'utf-8');
+
+    const diff = await detect.run(toVSCodeWindowsUri(uri));
+    expect(diff).not.toBeNull();
+    expect(diff!.repoRelativePath).toBe('sample.txt');
+    expect(diff!.hunks).toHaveLength(1);
   });
 
   it('ApplyDiffAction.stageHunk + unstageHunk round-trip via git index', async () => {
